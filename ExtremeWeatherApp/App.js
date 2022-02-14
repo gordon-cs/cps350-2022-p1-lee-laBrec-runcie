@@ -1,13 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import Weather from './src/Weather.js'
 
 export default function App() {
   return (
-    <View style={{flex: 1}}>
-      <Weather/>
-      <StatusBar hidden />
+    <View style={{height:10000, backgroundColor: "#ffa634"}}>
+      <ScrollView>
+        <Weather/>
+        <StatusBar hidden />
+      </ScrollView>
     </View>
   );
 }
