@@ -6,19 +6,20 @@ import {
   Image,
   SafeAreaView,
   TextInput,
+  ScrollView,
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
 
 export default class WeatherNow extends Component {
   render() {
     return (
-      <View style={{ flex: 1, flexDirection: "column", backgroundColor: "#ffa634",}}>
+      <View style={{ flex: 1, flexDirection: "column",}}>
         <Title />
         <SubTitle isLoading={this.props.isLoading}
                   weatherData={this.props.weatherData} />
         <Dial />
         <WeatherInfo isLoading={this.props.isLoading}
-                     weatherData={this.props.weatherData} />
+                    weatherData={this.props.weatherData} />
         <AirQuality isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData} />
         <Activities />
