@@ -34,7 +34,7 @@ class Title extends Component {
   render() {
     return (
       <View style = {{
-              flex:1,
+              flex: 1,
               alignItems: "center",
             }}>
         <Text style = {{fontSize: 70,}}>
@@ -60,7 +60,7 @@ class SubTitle extends Component {
     }
     return (
       <View style={{
-              flex:1,
+              flex: 1,
               alignItems: "center",
             }}>
         <Text>
@@ -75,7 +75,7 @@ class Dial extends Component {
   render() {
     return (
       <View style={{
-              flex:4,
+              flex: 4,
               alignItems: "center",
             }}>
         <SafeAreaView>
@@ -180,6 +180,7 @@ class WeatherInfo extends Component {
 }
 
 class AirQuality extends Component {
+  
   render() {
     return (
       <View style = {{
@@ -187,10 +188,13 @@ class AirQuality extends Component {
               alignItems: 'center',
             }}>
         <MultiSlider values={[0]}
-          sliderLength={100}
-          step = {5}
+          enableLabel
+          sliderLength={350}
+          step = {10}
           showStepLabels
-
+          min={0}
+          max={10}
+          optionsArray={sliderOptions}
         />
       </View>
     );
@@ -220,6 +224,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+const sliderOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const dialLabels = [
   {
