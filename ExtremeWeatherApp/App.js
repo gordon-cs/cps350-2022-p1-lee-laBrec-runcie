@@ -5,13 +5,11 @@ import Weather from './src/Weather.js'
 
 export default function App() {
   return (
-    <View style={{height:1000,}}>
-      <ImageBackground source = {require('./src/Rectangle7.jpg')} resizeMode="cover" style = {{flex:1}}>
-        <ScrollView>
-          <Weather/>
-          <StatusBar hidden />
-        </ScrollView>
-      </ImageBackground>
-    </View>
+  <View style={{flex:1}}>
+    <ImageBackground source = {require('./src/Rectangle7.jpg')} resizeMode="cover" style = {{flex:1}}>
+      <Weather/>
+      <StatusBar hidden />
+    </ImageBackground>
+  </View>
   );
 }
