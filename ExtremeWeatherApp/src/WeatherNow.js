@@ -74,12 +74,12 @@ class Dial extends Component {
   render() {
     return (
       <View style={{
-              flex:3,
+              flex:4,
               alignItems: "center",
             }}>
         <SafeAreaView>
           <TextInput placeholder="Danger Level" textAlign='center'/>
-          <RNSpeedometer value={45} // Make dynamic 
+          <RNSpeedometer value={68} // Make dynamic 
             labels={dialLabels} 
             innerCircleStyle={{backgroundColor: "transparent"}}/>
         </SafeAreaView>
@@ -230,7 +230,7 @@ const dialLabels = [
     activeBarColor: '#F8ED31',
   },
   {
-    name: '66.68',
+    name: 'Severe',
     labelColor: '#f2cf1f',
     activeBarColor: '#FBA81A',
   },

@@ -1,15 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import Weather from './src/Weather.js'
 
 export default function App() {
   return (
-    <View style={{height:10000, backgroundColor: "#ffa634"}}>
-      <ScrollView>
-        <Weather/>
-        <StatusBar hidden />
-      </ScrollView>
+    <View style={{height:1000,}}>
+      <ImageBackground source = {require('./src/Rectangle7.jpg')} resizeMode="cover" style = {{flex:1}}>
+        <ScrollView>
+          <Weather/>
+          <StatusBar hidden />
+        </ScrollView>
+      </ImageBackground>
     </View>
   );
 }
