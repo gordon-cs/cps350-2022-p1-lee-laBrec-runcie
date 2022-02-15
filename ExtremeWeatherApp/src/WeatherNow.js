@@ -9,6 +9,7 @@ import {
   ScrollView,
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 export default class WeatherNow extends Component {
   render() {
@@ -183,7 +184,14 @@ class AirQuality extends Component {
     return (
       <View style = {{
               flex:1,
+              alignItems: 'center',
             }}>
+        <MultiSlider values={[0]}
+          sliderLength={100}
+          step = {5}
+          showStepLabels
+
+        />
       </View>
     );
   }
