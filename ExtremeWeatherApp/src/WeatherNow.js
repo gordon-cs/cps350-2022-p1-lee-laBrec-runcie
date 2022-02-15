@@ -4,8 +4,10 @@ import {
   View,
   StyleSheet,
   Image,
+  SafeAreaView,
+  TextInput,
 } from 'react-native';
-
+import RNSpeedometer from 'react-native-speedometer';
 
 export default class WeatherNow extends Component {
   render() {
@@ -74,9 +76,12 @@ class Dial extends Component {
               flex:3,
               alignItems: "center",
             }}>
-        <Image style = {{
-              }} 
-              source = {require('./danger.jpg')}/>
+        <SafeAreaView>
+          <TextInput placeholder="Danger Level" textAlign='center'/>
+          <RNSpeedometer value={45} // Make dynamic 
+            labels={dialLabels} 
+            innerCircleStyle={{backgroundColor: "transparent"}}/>
+        </SafeAreaView>
       </View>
     );
   }
@@ -204,5 +209,38 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: "center",
-  }
+  },
 });
+
+const dialLabels = [
+  {
+    name: '16.67',
+    labelColor: '#ff2900',
+    activeBarColor: '#00FFFF',
+  },
+  {
+    name: '33.34',
+    labelColor: '#ff5400',
+    activeBarColor: '#5FBB4C',
+  },
+  {
+    name: '50',
+    labelColor: '#f4ab44',
+    activeBarColor: '#F8ED31',
+  },
+  {
+    name: '66.68',
+    labelColor: '#f2cf1f',
+    activeBarColor: '#FBA81A',
+  },
+  {
+    name: '83.35',
+    labelColor: '#14eb6e',
+    activeBarColor: '#EF4136',
+  },
+  {
+    name: '100',
+    labelColor: '#00ff6b',
+    activeBarColor: '#ED008C',
+  },
+]; 
