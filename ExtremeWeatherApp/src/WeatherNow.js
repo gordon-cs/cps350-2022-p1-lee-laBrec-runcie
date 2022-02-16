@@ -10,6 +10,12 @@ import {
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
+import CustomMarker from './CustomMarker';
+
+// const [sliderOneChanging, setSliderOneChanging] = React.useState(false);
+// const [sliderOneValue, setSliderOneValue] = React.useState([5]);
+// const sliderOneValuesChangeStart = () => setSliderOneChanging(true);
+// const sliderOneValuesChange = values => setSliderOneValue(values);
 
 export default class WeatherNow extends Component {
   render() {
@@ -195,6 +201,7 @@ class AirQuality extends Component {
           min={0}
           max={10}
           optionsArray={sliderOptions}
+          customMarker={CustomMarker}
         />
       </View>
     );
