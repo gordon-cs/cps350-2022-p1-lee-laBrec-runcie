@@ -24,11 +24,12 @@ export default class WeatherNow extends Component {
         <Title />
         <SubTitle isLoading={this.props.isLoading}
                   weatherData={this.props.weatherData} />
-        <Dial />
+        <Dial dangerLevel={this.props.dangerLevel}/>
         <WeatherInfo isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData} />
         <AirQuality isLoading={this.props.isLoading}
-                    weatherData={this.props.weatherData} />
+                    weatherData={this.props.weatherData}
+                    onParameterChange={this.props.onParameterChange} />
         <Activities />
       </View>
     );
@@ -43,9 +44,7 @@ class Title extends Component {
               flex: 1,
               alignItems: "center",
             }}>
-        <Text style = {{fontSize: 70,}}>
-          XTRM WFR
-        </Text>
+        <Image style = {{width:"55%"}} source = {require('./XTRMWFR.png')}/>
       </View>
     );
   }
@@ -79,14 +78,18 @@ class SubTitle extends Component {
 
 class Dial extends Component {
   render() {
+    let dangervalue = 100;
+    if ( ! this.props.isLoading ) {
+      dangervalue = this.props.dangerLevel;
+    }
     return (
       <View style={{
-              flex: 4,
+              flex: 5,
               alignItems: "center",
             }}>
         <SafeAreaView>
           <TextInput placeholder="Danger Level" textAlign='center'/>
-          <RNSpeedometer value={68} // Make dynamic 
+          <RNSpeedometer value={dangervalue} // Make dynamic 
             labels={dialLabels} 
             innerCircleStyle={{backgroundColor: "transparent"}}/>
         </SafeAreaView>
@@ -104,12 +107,12 @@ class Dial extends Component {
  */
 class WeatherInfo extends Component {
   render() {
-    let AverageTemp = 100;
+    let CurrTemp = 100;
     let Humidity = 100;
     let UVindex = 100;
     let Precipitation = 100;
     if ( ! this.props.isLoading) {
-      AverageTemp = "Yes";
+      CurrTemp = this.props.weatherData.current.temp_f;
       Humidity = this.props.weatherData.current.humidity;
       UVindex = this.props.weatherData.current.uv;
       Precipitation = "Yes";
@@ -127,13 +130,13 @@ class WeatherInfo extends Component {
           <View style = {styles.columnflex}>
             {/* Icon */}
             <Image style = {styles.image}
-                  source = {require('./download.png')}/>
+                  source = {require('./Temp.png')}/>
             {/* Data */}
             <Text style = {{flex: 1,}}>
-              {AverageTemp}
+              {CurrTemp} F
             </Text>
             <Text style = {{flex: 1,}}>
-              Average Tmp
+              Current Tmp
             </Text>
           </View>
 
@@ -141,7 +144,7 @@ class WeatherInfo extends Component {
           <View style= {styles.columnflex}>
             {/* Icon */}
             <Image style = {styles.image}
-                  source={require('./download.png')}/>
+                  source={require('./waterdrop.png')}/>
             <Text style={{flex: 1,}}>
               {/* Data */}
               {Humidity}
@@ -155,7 +158,7 @@ class WeatherInfo extends Component {
           <View style = {styles.columnflex}>
             {/* Icon */}
             <Image style = {styles.image}
-                  source = {require('./download.png')}/>
+                  source = {require('./cloud.png')}/>
             <Text style = {{flex: 1,}}>
               {/* Data */}
               {Precipitation}
@@ -169,7 +172,7 @@ class WeatherInfo extends Component {
           <View style = {styles.columnflex}>
             {/* Icon */}
             <Image style = {styles.image}
-                  source = {require('./download.png')}/>
+                  source = {require('./sun.png')}/>
             <Text style = {{flex: 1,}}>
               {/* Data */}
               {UVindex}
@@ -186,22 +189,27 @@ class WeatherInfo extends Component {
 }
 
 class AirQuality extends Component {
-  
   render() {
     return (
       <View style = {{
-              flex:1,
+              flex:2,
               alignItems: 'center',
+              paddingTop: "10%",
             }}>
         <MultiSlider values={[0]}
           enableLabel
           sliderLength={350}
-          step = {10}
-          showStepLabels
+          step = {3}
           min={0}
           max={10}
           optionsArray={sliderOptions}
           customMarker={CustomMarker}
+          stepsAs={sliderLabels}
+          showSteps
+          showStepMarkers
+          showStepLabels
+          smoothSnapped
+          onValuesChange={this.props.onParameterChange}
         />
       </View>
     );
@@ -222,8 +230,7 @@ class Activities extends Component {
 const styles = StyleSheet.create({
   image: {
     flex: 2, 
-    width: 100, 
-    height: 100,
+    resizeMode: "contain",
   },
   columnflex: {
     flex: 1,
@@ -232,36 +239,71 @@ const styles = StyleSheet.create({
   },
 });
 
-const sliderOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const sliderOptions = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+
+
+//TODO: Implement correctly
+const sliderLabels = [
+  {
+    index: 1,
+    stepLabel: "0",
+    prefix: "0",
+    suffix: "0",
+  },
+  {
+    index: 0,
+    stepLabel: "0",
+    prefix: "0",
+    suffix: "0",
+  },
+  {
+    index: 0,
+    stepLabel: "0",
+    prefix: "0",
+    suffix: "0",
+  },
+  {
+    index: 0,
+    stepLabel: "0",
+    prefix: "0",
+    suffix: "0",
+  },
+  {
+    index: 0,
+    stepLabel: "0",
+    prefix: "0",
+    suffix: "0",
+  }
+] 
 
 const dialLabels = [
   {
-    name: '16.67',
+    name: 'None',
     labelColor: '#ff2900',
     activeBarColor: '#00FFFF',
   },
   {
-    name: '33.34',
+    name: 'Slight',
     labelColor: '#ff5400',
     activeBarColor: '#5FBB4C',
   },
   {
-    name: '50',
+    name: 'Moderate',
     labelColor: '#f4ab44',
     activeBarColor: '#F8ED31',
   },
   {
-    name: 'Severe',
+    name: 'Considerable',
     labelColor: '#f2cf1f',
     activeBarColor: '#FBA81A',
   },
   {
-    name: '83.35',
+    name: 'Severe',
     labelColor: '#14eb6e',
     activeBarColor: '#EF4136',
   },
   {
-    name: '100',
+    name: 'XTRM',
     labelColor: '#00ff6b',
     activeBarColor: '#ED008C',
   },

@@ -8,10 +8,34 @@ export default class ExtremeWeatherApp extends Component {
     super(props);
     this.state = {
       isLoading: true,
+
+      //Temporary for prototype
+      value1: 0,
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getWeatherApi = this.getWeatherApi.bind(this);
+
+    //Temporary for prototype
+    this.handleParameterChange = this.handleParameterChange.bind(this);
   }
+
+  //Temporary for prototype
+  handleParameterChange(newValue) {
+    this.setState({
+      value1: newValue,
+      isLoading: true,
+    });
+    this.calculateValue(this.state.value1);
+  }
+
+    //Temporary for prototype
+    async calculateValue(newValue) {
+      newValue = newValue * 120;
+      this.setState({
+        dangerLevel: newValue,
+        isLoading: false,
+      });
+    }
 
   componentDidMount() {
     this.getWeatherApi();
@@ -30,11 +54,15 @@ export default class ExtremeWeatherApp extends Component {
       console.error(error);
     }
   }
+
   render() {
     return (
       <WeatherNow isLoading={this.state.isLoading}
                   weatherData={this.state.weatherData}
-                  location={this.state.location}
+
+                  // Temporary for prototype
+                  onParameterChange={this.handleParameterChange}
+                  dangerLevel={this.state.dangerLevel}
                   />
     );
   }
