@@ -6,6 +6,8 @@ import {
   Image,
   SafeAreaView,
   TextInput,
+  Button,
+  Alert,
   ScrollView,
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
@@ -29,6 +31,7 @@ export default class WeatherNow extends Component {
                     weatherData={this.props.weatherData} />
         <AirQuality isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
+                    updateParameter={this.props.updateParameter}
                     onParameterChange={this.props.onParameterChange} />
         <Activities />
       </View>
@@ -44,7 +47,7 @@ class Title extends Component {
               flex: 1,
               alignItems: "center",
             }}>
-        <Image style = {{width:"55%"}} source = {require('./XTRMWFR.png')}/>
+        <Image source = {require('./XTRMWFR.png')}/>
       </View>
     );
   }
@@ -209,7 +212,13 @@ class AirQuality extends Component {
           showStepMarkers
           showStepLabels
           smoothSnapped
-          onValuesChange={this.props.onParameterChange}
+          onValuesChangeFinish={this.props.updateParameter}
+        />
+        <Button 
+          style ={{alignItems: "center"}}
+          title="SAVE"
+          color={"pink"}
+          onPress={this.props.onParameterChange}
         />
       </View>
     );

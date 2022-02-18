@@ -8,34 +8,39 @@ export default class ExtremeWeatherApp extends Component {
     super(props);
     this.state = {
       isLoading: true,
-
       //Temporary for prototype
+      temperature: 0,
       value1: 0,
+
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getWeatherApi = this.getWeatherApi.bind(this);
 
     //Temporary for prototype
+    this.updateParameter = this.updateParameter.bind(this);
     this.handleParameterChange = this.handleParameterChange.bind(this);
   }
 
   //Temporary for prototype
-  handleParameterChange(newValue) {
+  updateParameter(newValue) {
     this.setState({
       value1: newValue,
-      isLoading: true,
     });
-    this.calculateValue(this.state.value1);
   }
 
-    //Temporary for prototype
-    async calculateValue(newValue) {
-      newValue = newValue * 120;
-      this.setState({
-        dangerLevel: newValue,
-        isLoading: false,
-      });
-    }
+  handleParameterChange() {
+    this.calculateValue(this.state.value1, this.state.temperature);
+  }
+
+
+  //Temporary for prototype
+  async calculateValue(newValue, temperature) {
+    newValue = temperature * newValue;
+    this.setState({
+      dangerLevel: newValue,
+      isLoading: false,
+    });
+  }
 
   componentDidMount() {
     this.getWeatherApi();
@@ -49,6 +54,7 @@ export default class ExtremeWeatherApp extends Component {
       this.setState({
         isLoading: false,
         weatherData: responseJson,
+        temperature: responseJson.current.temp_f,
       });
     } catch (error) {
       console.error(error);
@@ -61,6 +67,7 @@ export default class ExtremeWeatherApp extends Component {
                   weatherData={this.state.weatherData}
 
                   // Temporary for prototype
+                  updateParameter={this.updateParameter}
                   onParameterChange={this.handleParameterChange}
                   dangerLevel={this.state.dangerLevel}
                   />
