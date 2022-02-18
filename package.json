@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
+    "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
     "react-d3-speedometer": "^1.0.2",
     "react-native-safe-area-context": "^3.3.2",
