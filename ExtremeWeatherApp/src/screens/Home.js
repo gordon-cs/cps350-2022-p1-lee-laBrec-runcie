@@ -5,7 +5,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import Weather from './src/Weather.js'
 
-export default class Homescreen extends Component {
+export default class HomeScreen extends Component {
   render() {
     return (
         <View style={{flex:1,}}>

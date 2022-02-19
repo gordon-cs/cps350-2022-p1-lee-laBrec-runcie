@@ -4,8 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Weather from './src/Weather.js'; // Think I can remove
-import Homescreem from './scr/screens/Home.js';
-import Settingsscreen from './scr/screens/Settings.js';
+import HomeScreen from './src/screens/Home.js';
+import SettingsScreen from './src/screens/Settings.js';
 
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
 
 const AppNavigator = createStackNavigator({
   Home: {
-    screen: Homescreem
+    screen: Homescreen
  },
  Settings: {
   screen: Settingsscreen
