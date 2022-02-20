@@ -38,7 +38,23 @@ class Title extends Component {
         <PrefSlider isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
                     updateParameter={this.props.updateParameter}
-                    onParameterChange={this.props.onParameterChange} /> 
+                    onParameterChange={this.props.onParameterChange
+                    }/> 
+        <PrefSlider isLoading={this.props.isLoading}
+                    weatherData={this.props.weatherData}
+                    updateParameter={this.props.updateParameter}
+                    onParameterChange={this.props.onParameterChange
+                    }/> 
+        <PrefSlider isLoading={this.props.isLoading}
+                    weatherData={this.props.weatherData}
+                    updateParameter={this.props.updateParameter}
+                    onParameterChange={this.props.onParameterChange
+                    }/>
+        <PrefSlider isLoading={this.props.isLoading}
+                    weatherData={this.props.weatherData}
+                    updateParameter={this.props.updateParameter}
+                    onParameterChange={this.props.onParameterChange
+                    }/> 
         <View style = {{flex:1}}>
           <Button 
             style ={{alignItems: "center"}}
@@ -56,7 +72,7 @@ class PrefSlider extends Component {
   render() {
     return (
       <View style = {{
-              flex:2,
+              flex:1,
               alignItems: 'center',
               paddingTop: "10%",
             }}>
