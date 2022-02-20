@@ -11,6 +11,8 @@ import {
   ScrollView,
 } from 'react-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomMarker from './CustomMarker';
 
 export default class Settings extends Component {
@@ -38,23 +40,19 @@ class Title extends Component {
         <PrefSlider isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
                     updateParameter={this.props.updateParameter}
-                    onParameterChange={this.props.onParameterChange
-                    }/> 
+                    /> 
         <PrefSlider isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
                     updateParameter={this.props.updateParameter}
-                    onParameterChange={this.props.onParameterChange
-                    }/> 
+                    /> 
         <PrefSlider isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
                     updateParameter={this.props.updateParameter}
-                    onParameterChange={this.props.onParameterChange
-                    }/>
+                    />
         <PrefSlider isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
                     updateParameter={this.props.updateParameter}
-                    onParameterChange={this.props.onParameterChange
-                    }/> 
+                    /> 
         <View style = {{flex:1}}>
           <Button 
             style ={{alignItems: "center"}}

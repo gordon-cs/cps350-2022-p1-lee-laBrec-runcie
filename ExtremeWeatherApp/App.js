@@ -14,8 +14,8 @@ function HomeScreen( {navigation} ) {
           style = {{flex:1}}>
         <Weather />
         <Button
-        title="Settings"
-        onPress={() => navigation.navigate('Settings')}
+          title="Settings"
+          onPress={() => navigation.navigate('Settings')}
         />
         <StatusBar hidden />
         </ImageBackground>
@@ -23,14 +23,19 @@ function HomeScreen( {navigation} ) {
   )
 }
 
-function SettingsScreen() {
+function SettingsScreen( {navigation} ) {
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>      
       <ImageBackground source = {require('./src/gradientbackground.jpg')} 
           resizeMode="cover" 
           style = {{flex:1}}>
           <Settings />
-
+          <Button
+            style ={{alignItems: "center"}}
+            title="BACK"
+            color={"blue"}
+            onPress={() => navigation.navigate('Home')}
+          />
       </ImageBackground>
     </View>
   )

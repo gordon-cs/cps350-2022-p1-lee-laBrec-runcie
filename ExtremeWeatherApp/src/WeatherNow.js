@@ -109,7 +109,7 @@ class WeatherInfo extends Component {
       CurrTemp = this.props.weatherData.current.temp_f;
       Humidity = this.props.weatherData.current.humidity;
       UVindex = this.props.weatherData.current.uv;
-      Precipitation = "Yes";
+      Precipitation = this.props.weatherData.current.condition.text;
     }
     return (
       <View style = {{

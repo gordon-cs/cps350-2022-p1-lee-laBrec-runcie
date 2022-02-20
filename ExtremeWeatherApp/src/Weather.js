@@ -8,25 +8,47 @@ export default class ExtremeWeatherApp extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      //Temporary for prototype
       temperature: 0,
       humidity: 0,
       precipitation: 0,
-      value1: 0,
+      UVindex: 0,
+      valueTemp: 0,
+      valueHumid: 0,
+      valuePrecip: 0,
+      valueUV: 0,
 
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getWeatherApi = this.getWeatherApi.bind(this);
 
-    //Temporary for prototype
-    this.updateParameter = this.updateParameter.bind(this);
+    this.updateTempPref = this.updateTempPref.bind(this);
+    this.updateHumidityPref = this.updateHumidityPref.bind(this);
+    this.updatePrecipPref = this.updatePrecipPref.bind(this);
+    this.updateUVPref = this.updateUVPref.bind(this);
     this.handleParameterChange = this.handleParameterChange.bind(this);
   }
 
-  //Temporary for prototype
-  updateParameter(newValue) {
+  updateTempPref(newValue) {
     this.setState({
-      value1: newValue,
+      valueTemp: newValue,
+    });
+  }
+
+  updateHumidityPref(newValue) {
+    this.setState({
+      valueHumid: newValue,
+    });
+  }
+
+  updatePrecipPref(newValue) {
+    this.setState({
+      valuePrecip: newValue,
+    });
+  }
+
+  updateUVPref(newValue) {
+    this.setState({
+      valueUV: newValue,
     });
   }
 
@@ -35,7 +57,6 @@ export default class ExtremeWeatherApp extends Component {
   }
 
 
-  //Temporary for prototype
   async calculateValue(newValue, temperature) {
     newValue = temperature * newValue;
     this.setState({
@@ -57,6 +78,8 @@ export default class ExtremeWeatherApp extends Component {
         isLoading: false,
         weatherData: responseJson,
         temperature: responseJson.current.temp_f,
+        humidity: responseJson.current.humidity,
+        UVindex: responseJson.current.uv,
       });
     } catch (error) {
       console.error(error);
@@ -69,7 +92,10 @@ export default class ExtremeWeatherApp extends Component {
                   weatherData={this.state.weatherData}
 
                   // Temporary for prototype
-                  updateParameter={this.updateParameter}
+                  updateTempPref={this.updateTempPref}
+                  updateHumidityPref={this.updateHumidityPref}
+                  updatePrecipPref={this.updatePrecipPref}
+                  updateUVPref={this.updateUVPref}
                   onParameterChange={this.handleParameterChange}
                   dangerLevel={this.state.dangerLevel}
                   />
