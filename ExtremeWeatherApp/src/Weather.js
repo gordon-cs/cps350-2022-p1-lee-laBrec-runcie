@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import WeatherNow from './WeatherNow';
 
-/* Handles Top Level State - Used by WeatherNow to display information retrieved */
-export default class ExtremeWeatherApp extends Component {
+/* Handles Top Level State - Used by WeatherNow and Settings to display information retrieved */
+export default class Weather extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,46 +16,11 @@ export default class ExtremeWeatherApp extends Component {
       valueHumid: 0,
       valuePrecip: 0,
       valueUV: 0,
-
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getWeatherApi = this.getWeatherApi.bind(this);
-
-    this.updateTempPref = this.updateTempPref.bind(this);
-    this.updateHumidityPref = this.updateHumidityPref.bind(this);
-    this.updatePrecipPref = this.updatePrecipPref.bind(this);
-    this.updateUVPref = this.updateUVPref.bind(this);
-    this.handleParameterChange = this.handleParameterChange.bind(this);
   }
-
-  updateTempPref(newValue) {
-    this.setState({
-      valueTemp: newValue,
-    });
-  }
-
-  updateHumidityPref(newValue) {
-    this.setState({
-      valueHumid: newValue,
-    });
-  }
-
-  updatePrecipPref(newValue) {
-    this.setState({
-      valuePrecip: newValue,
-    });
-  }
-
-  updateUVPref(newValue) {
-    this.setState({
-      valueUV: newValue,
-    });
-  }
-
-  handleParameterChange() {
-    this.calculateValue(this.state.value1, this.state.temperature);
-  }
-
+  
 
   async calculateValue(newValue, temperature) {
     newValue = temperature * newValue;
@@ -90,13 +55,6 @@ export default class ExtremeWeatherApp extends Component {
     return (
       <WeatherNow isLoading={this.state.isLoading}
                   weatherData={this.state.weatherData}
-
-                  // Temporary for prototype
-                  updateTempPref={this.updateTempPref}
-                  updateHumidityPref={this.updateHumidityPref}
-                  updatePrecipPref={this.updatePrecipPref}
-                  updateUVPref={this.updateUVPref}
-                  onParameterChange={this.handleParameterChange}
                   dangerLevel={this.state.dangerLevel}
                   />
     );

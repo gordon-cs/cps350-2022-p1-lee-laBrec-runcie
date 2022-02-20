@@ -4,7 +4,7 @@ import { ImageBackground, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Weather from './src/Weather.js';
-import Settings from './src/Settings.js';
+import SettingState from './src/SettingState.js';
 
 function HomeScreen( {navigation} ) {
   return (
@@ -29,7 +29,7 @@ function SettingsScreen( {navigation} ) {
       <ImageBackground source = {require('./src/gradientbackground.jpg')} 
           resizeMode="cover" 
           style = {{flex:1}}>
-          <Settings />
+          <SettingState />
           <Button
             style ={{alignItems: "center"}}
             title="BACK"

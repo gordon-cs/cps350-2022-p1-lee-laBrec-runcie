@@ -2,17 +2,10 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  StyleSheet,
   Image,
-  SafeAreaView,
-  TextInput,
   Button,
-  Alert,
-  ScrollView,
 } from 'react-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomMarker from './CustomMarker';
 
 export default class Settings extends Component {
@@ -39,7 +32,7 @@ class Title extends Component {
         </Text>
         <PrefSlider isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
-                    updateParameter={this.props.updateParameter}
+                    updateTempPref={this.props.updateTempPref}
                     /> 
         <PrefSlider isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
@@ -86,7 +79,7 @@ class PrefSlider extends Component {
           showStepMarkers
           showStepLabels
           smoothSnapped
-          onValuesChangeFinish={this.props.updateParameter}
+          onValuesChangeFinish={this.props.updateTempPref}
         />
       </View>
     );
