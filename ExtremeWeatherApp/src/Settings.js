@@ -39,6 +39,14 @@ class Title extends Component {
                     weatherData={this.props.weatherData}
                     updateParameter={this.props.updateParameter}
                     onParameterChange={this.props.onParameterChange} /> 
+        <View style = {{flex:1}}>
+          <Button 
+            style ={{alignItems: "center"}}
+            title="SAVE"
+            color={"pink"}
+            onPress={this.props.onParameterChange}
+          />
+        </View>
       </View>
     );
   }
@@ -65,12 +73,6 @@ class PrefSlider extends Component {
           showStepLabels
           smoothSnapped
           onValuesChangeFinish={this.props.updateParameter}
-        />
-        <Button 
-          style ={{alignItems: "center"}}
-          title="SAVE"
-          color={"pink"}
-          onPress={this.props.onParameterChange}
         />
       </View>
     );

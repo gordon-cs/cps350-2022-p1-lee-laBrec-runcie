@@ -10,6 +10,8 @@ export default class ExtremeWeatherApp extends Component {
       isLoading: true,
       //Temporary for prototype
       temperature: 0,
+      humidity: 0,
+      precipitation: 0,
       value1: 0,
 
     };
