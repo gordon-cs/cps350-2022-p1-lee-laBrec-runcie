@@ -14,11 +14,6 @@ import RNSpeedometer from 'react-native-speedometer';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import CustomMarker from './CustomMarker';
 
-// const [sliderOneChanging, setSliderOneChanging] = React.useState(false);
-// const [sliderOneValue, setSliderOneValue] = React.useState([5]);
-// const sliderOneValuesChangeStart = () => setSliderOneChanging(true);
-// const sliderOneValuesChange = values => setSliderOneValue(values);
-
 export default class WeatherNow extends Component {
   render() {
     return (
@@ -29,10 +24,6 @@ export default class WeatherNow extends Component {
         <Dial dangerLevel={this.props.dangerLevel}/>
         <WeatherInfo isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData} />
-        <AirQuality isLoading={this.props.isLoading}
-                    weatherData={this.props.weatherData}
-                    updateParameter={this.props.updateParameter}
-                    onParameterChange={this.props.onParameterChange} />
         <Activities />
       </View>
     );
@@ -191,40 +182,6 @@ class WeatherInfo extends Component {
   }
 }
 
-class AirQuality extends Component {
-  render() {
-    return (
-      <View style = {{
-              flex:2,
-              alignItems: 'center',
-              paddingTop: "10%",
-            }}>
-        <MultiSlider values={[0]}
-          enableLabel
-          sliderLength={350}
-          step = {3}
-          min={0}
-          max={10}
-          optionsArray={sliderOptions}
-          customMarker={CustomMarker}
-          stepsAs={sliderLabels}
-          showSteps
-          showStepMarkers
-          showStepLabels
-          smoothSnapped
-          onValuesChangeFinish={this.props.updateParameter}
-        />
-        <Button 
-          style ={{alignItems: "center"}}
-          title="SAVE"
-          color={"pink"}
-          onPress={this.props.onParameterChange}
-        />
-      </View>
-    );
-  }
-}
-
 class Activities extends Component {
   render() {
     return (
@@ -247,43 +204,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-
-const sliderOptions = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-
-
-//TODO: Implement correctly
-const sliderLabels = [
-  {
-    index: 1,
-    stepLabel: "0",
-    prefix: "0",
-    suffix: "0",
-  },
-  {
-    index: 0,
-    stepLabel: "0",
-    prefix: "0",
-    suffix: "0",
-  },
-  {
-    index: 0,
-    stepLabel: "0",
-    prefix: "0",
-    suffix: "0",
-  },
-  {
-    index: 0,
-    stepLabel: "0",
-    prefix: "0",
-    suffix: "0",
-  },
-  {
-    index: 0,
-    stepLabel: "0",
-    prefix: "0",
-    suffix: "0",
-  }
-] 
 
 const dialLabels = [
   {

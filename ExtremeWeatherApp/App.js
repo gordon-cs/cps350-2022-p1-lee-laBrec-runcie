@@ -4,6 +4,7 @@ import { ImageBackground, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Weather from './src/Weather.js';
+import Settings from './src/Settings.js';
 
 function HomeScreen( {navigation} ) {
   return (
@@ -11,7 +12,7 @@ function HomeScreen( {navigation} ) {
         <ImageBackground source = {require('./src/gradientbackground.jpg')} 
           resizeMode="cover" 
           style = {{flex:1}}>
-        <Weather/>
+        <Weather />
         <Button
         title="Settings"
         onPress={() => navigation.navigate('Settings')}
@@ -24,11 +25,12 @@ function HomeScreen( {navigation} ) {
 
 function SettingsScreen() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>      
+    <View style={{ flex: 1, justifyContent: 'center' }}>      
       <ImageBackground source = {require('./src/gradientbackground.jpg')} 
           resizeMode="cover" 
           style = {{flex:1}}>
-          <Text>Details Screen</Text>
+          <Settings />
+
       </ImageBackground>
     </View>
   )
