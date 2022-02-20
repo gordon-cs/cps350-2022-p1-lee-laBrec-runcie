@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
-import Weather from './Weather';
 import Settings from './Settings';
 
 /* Handles Top Level State - Used by Settings to display information retrieved */
-export default class SettingState extends Weather {
+export default class SettingState extends Component {
   constructor(props) {
     super(props);
     this.updateTempPref = this.updateTempPref.bind(this);
@@ -15,28 +14,21 @@ export default class SettingState extends Weather {
   }
 
   updateTempPref(newValue) {
-    super.setState({
-      valueTemp: newValue,
-    });
-    console.log(newValue);
+    localStorage.setItem('temprua', newValue);
+    console.log(localStorage.getItem('temprua'));
+    console.log(1);
   }
 
   updateHumidityPref(newValue) {
-    super.setState({
-      valueHumid: newValue,
-    });
+    localStorage.setItem('humidity', newValue);
   }
 
   updatePrecipPref(newValue) {
-    super.setState({
-      valuePrecip: newValue,
-    });
+    localStorage.setItem('precipitation', newValue);
   }
 
   updateUVPref(newValue) {
-    super.setState({
-      valueUV: newValue,
-    });
+    localStorage.setItem('UV', newValue);
   }
 
   handleParameterChange() {

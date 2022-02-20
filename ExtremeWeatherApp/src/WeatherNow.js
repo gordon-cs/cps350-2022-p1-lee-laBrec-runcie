@@ -11,8 +11,6 @@ import {
   ScrollView,
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import CustomMarker from './CustomMarker';
 
 export default class WeatherNow extends Component {
   render() {

@@ -13,23 +13,6 @@ export default class Settings extends Component {
     return (
       <View style={{ flex: 1, flexDirection: "column",}}>
         <Title />
-      </View>
-    );
-  }
-}
-
-/* Title class - no Props needed*/
-class Title extends Component {
-  render() {
-    return (
-      <View style = {{
-              flex: 2,
-              alignItems: "center",
-            }}>
-        <Image source = {require('./XTRMWFR.png')}/>
-        <Text>
-          Preferences
-        </Text>
         <PrefSlider isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
                     updateTempPref={this.props.updateTempPref}
@@ -54,6 +37,23 @@ class Title extends Component {
             onPress={this.props.onParameterChange}
           />
         </View>
+      </View>
+    );
+  }
+}
+
+/* Title class - no Props needed*/
+class Title extends Component {
+  render() {
+    return (
+      <View style = {{
+              flex: 2,
+              alignItems: "center",
+            }}>
+        <Image source = {require('./XTRMWFR.png')}/>
+        <Text>
+          Preferences
+        </Text>
       </View>
     );
   }
