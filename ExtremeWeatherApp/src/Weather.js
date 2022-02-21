@@ -12,7 +12,6 @@ export default class Weather extends Component {
       humidity: 0,
       precipitation: 0,
       UVindex: 0,
-      valueTemp: 0,
       valueHumid: 0,
       valuePrecip: 0,
       valueUV: 0,
@@ -23,11 +22,12 @@ export default class Weather extends Component {
   
 
   async calculateValue(newValue, temperature) {
-    newValue = temperature * newValue;
-    this.setState({
-      dangerLevel: newValue,
-      isLoading: false,
-    });
+    console.log(localStorage.getItem('temprua'));
+    // newValue = temperature * valueTemp;
+    // this.setState({
+    //   dangerLevel: newValue,
+    //   isLoading: false,
+    // });
   }
 
   componentDidMount() {

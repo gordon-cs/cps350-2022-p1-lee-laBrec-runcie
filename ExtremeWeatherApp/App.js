@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Weather from './src/Weather.js';
 import SettingState from './src/SettingState.js';
+import 'localstorage-polyfill';
 
 function HomeScreen( {navigation} ) {
   return (
