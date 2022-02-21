@@ -14,19 +14,19 @@ export default class SettingState extends Weather {
     this.handleParameterChange = this.handleParameterChange.bind(this);
   }
 
-  async updateTempPref(newValue) {
+  updateTempPref(newValue) {
     localStorage.setItem('temprua', JSON.stringify(newValue));
   }
 
-  async updateHumidityPref(newValue) {
+  updateHumidityPref(newValue) {
     localStorage.setItem('humidity', JSON.stringify(newValue));
   }
 
-  async updatePrecipPref(newValue) {
+  updatePrecipPref(newValue) {
     localStorage.setItem('precipitation', JSON.stringify(newValue));
   }
 
-  async updateUVPref(newValue) {
+  updateUVPref(newValue) {
     localStorage.setItem('UV', JSON.stringify(newValue));
   }
 

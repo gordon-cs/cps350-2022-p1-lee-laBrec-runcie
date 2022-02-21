@@ -22,14 +22,11 @@ export default class Weather extends Component {
   }
   
   async parameterChange() {
-    this.setState({
-      valueTemp: JSON.parse(localStorage.getItem('temprua')),
-    })
-    this.calculateValue(this.state.temperature, this.state.humidity, this.state.precipitation, this.state.UVindex, this.state.valueTemp)
+    this.calculateValue(this.state.temperature, this.state.humidity, this.state.precipitation, this.state.UVindex)
   }
 
   async calculateValue(Temp, Humid, Precip, UV, valueTemp) {
-    // console.log(JSON.parse(localStorage.getItem('temprua')));
+    console.log(JSON.parse(localStorage.getItem('temprua')));
     console.log(Temp);
     console.log(valueTemp);
     // newValue = temperature * valueTemp;
