@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   Text,
   View,
@@ -10,14 +11,15 @@ import CustomMarker from './CustomMarker';
 
 export default class Settings extends Component {
   render() {
+    
     return (
       <View style={{ flex: 1, flexDirection: "column",}}>
         <Title />
         <PrefSlider isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
                     updateTempPref={this.props.updateTempPref}
-                    /> 
-        <PrefSlider isLoading={this.props.isLoading}
+                    tempPref={this.props.tempPref}/> 
+        {/* <PrefSlider isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
                     updateParameter={this.props.updateParameter}
                     /> 
@@ -28,7 +30,7 @@ export default class Settings extends Component {
         <PrefSlider isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData}
                     updateParameter={this.props.updateParameter}
-                    /> 
+                    />  */}
         <View style = {{flex:1}}>
           <Button 
             style ={{alignItems: "center"}}
@@ -61,16 +63,22 @@ class Title extends Component {
 
 class PrefSlider extends Component {
   render() {
+    let tempPref = 0;
+    if (tempPref != null) {
+      tempPref=this.props.tempPref;
+    }
     return (
       <View style = {{
               flex:1,
               alignItems: 'center',
               paddingTop: "10%",
-            }}>
+            }}> 
+        <Text>{tempPref}</Text>
         <MultiSlider values={[0]}
           enableLabel
           sliderLength={350}
           step = {3}
+          values = {tempPref}
           min={0}
           max={10}
           optionsArray={sliderOptions}

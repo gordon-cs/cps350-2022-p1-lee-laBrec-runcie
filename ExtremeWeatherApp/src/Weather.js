@@ -12,10 +12,6 @@ export default class Weather extends Component {
       humidity: 0,
       precipitation: 0,
       UVindex: 0,
-      valueHumid: 0,
-      valuePrecip: 0,
-      valueUV: 0,
-      valueTemp: 0,
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getWeatherApi = this.getWeatherApi.bind(this);
@@ -25,15 +21,17 @@ export default class Weather extends Component {
     this.calculateValue(this.state.temperature, this.state.humidity, this.state.precipitation, this.state.UVindex)
   }
 
-  async calculateValue(Temp, Humid, Precip, UV, valueTemp) {
-    console.log(JSON.parse(localStorage.getItem('temprua')));
-    console.log(Temp);
-    console.log(valueTemp);
-    // newValue = temperature * valueTemp;
-    // this.setState({
-    //   dangerLevel: newValue,
-    //   isLoading: false,
-    // });
+  async calculateValue(Temp, Humid, Precip, UV) {
+    let prefTemp = JSON.parse(localStorage.getItem('temprua'));
+    newValue = Temp * prefTemp[0];
+    localStorage.setItem('dangerLevel', JSON.stringify(newValue));
+    let finalValue = JSON.parse(localStorage.getItem('dangerLevel'));
+    this.state.dangerLevel = finalValue;
+    this.setState({
+      dangerLevel: finalValue,
+      isLoading: false,
+    });
+    console.log(this.state.dangerLevel);
   }
 
   componentDidMount() {

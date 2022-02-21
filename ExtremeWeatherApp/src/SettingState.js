@@ -1,5 +1,6 @@
 import React, { Component, } from 'react';
 
+
 import Weather from './Weather';
 import Settings from './Settings';
 
@@ -7,6 +8,9 @@ import Settings from './Settings';
 export default class SettingState extends Weather {
   constructor(props) {
     super(props);
+    this.state={
+      isLoading: true,
+    }
     this.updateTempPref = this.updateTempPref.bind(this);
     this.updateHumidityPref = this.updateHumidityPref.bind(this);
     this.updatePrecipPref = this.updatePrecipPref.bind(this);
@@ -30,8 +34,13 @@ export default class SettingState extends Weather {
     localStorage.setItem('UV', JSON.stringify(newValue));
   }
 
-  async handleParameterChange() {
+  handleParameterChange() {
     super.parameterChange();
+    newValue = JSON.parse(localStorage.getItem('temprua'));
+    console.log(newValue);
+    this.setState({
+      tempPref: newValue,
+    });
   }
 
   render() {
@@ -41,6 +50,9 @@ export default class SettingState extends Weather {
                 updatePrecipPref={this.updatePrecipPref}
                 updateUVPref={this.updateUVPref}
                 onParameterChange={this.handleParameterChange}
+                tempPref={this.state.tempPref}
+                sliderOnevalue={this.sliderOnevalue}
+                isLoading={this.state.isLoading}
                 />
     );
   }

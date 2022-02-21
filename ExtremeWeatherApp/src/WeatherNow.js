@@ -51,7 +51,7 @@ class Title extends Component {
  */
 class SubTitle extends Component {
   render() {
-    let location = 100;
+    let location;
     if ( ! this.props.isLoading) {
       location = this.props.weatherData.location.name;
     }
@@ -70,7 +70,7 @@ class SubTitle extends Component {
 
 class Dial extends Component {
   render() {
-    let dangervalue = 100;
+    let dangervalue;
     if ( ! this.props.isLoading ) {
       dangervalue = this.props.dangerLevel;
     }
@@ -99,10 +99,10 @@ class Dial extends Component {
  */
 class WeatherInfo extends Component {
   render() {
-    let CurrTemp = 100;
-    let Humidity = 100;
-    let UVindex = 100;
-    let Precipitation = 100;
+    let CurrTemp;
+    let Humidity;
+    let UVindex;
+    let Precipitation;
     if ( ! this.props.isLoading) {
       CurrTemp = this.props.weatherData.current.temp_f;
       Humidity = this.props.weatherData.current.humidity;
