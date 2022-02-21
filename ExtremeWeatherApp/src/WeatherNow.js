@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { React, Component } from 'react';
 import {
   Text,
   View,
@@ -13,6 +13,7 @@ import {
 import RNSpeedometer from 'react-native-speedometer';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import CustomMarker from './CustomMarker';
+import SettingsButton from './SettingsButton';
 
 // const [sliderOneChanging, setSliderOneChanging] = React.useState(false);
 // const [sliderOneValue, setSliderOneValue] = React.useState([5]);
@@ -24,6 +25,7 @@ export default class WeatherNow extends Component {
     return (
       <View style={{ flex: 1, flexDirection: "column",}}>
         <Title />
+        <SettingsButton />
         <SubTitle isLoading={this.props.isLoading}
                   weatherData={this.props.weatherData} />
         <Dial dangerLevel={this.props.dangerLevel}/>

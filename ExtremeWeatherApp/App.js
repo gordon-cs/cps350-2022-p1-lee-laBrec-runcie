@@ -12,10 +12,6 @@ function HomeScreen( {navigation} ) {
           resizeMode="cover" 
           style = {{flex:1}}>
         <Weather/>
-        <Button
-        title="Settings"
-        onPress={() => navigation.navigate('Settings')}
-        />
         <Text style={{fontFamily: "Segoe UI"}}></Text>
         <StatusBar hidden />
         </ImageBackground>
