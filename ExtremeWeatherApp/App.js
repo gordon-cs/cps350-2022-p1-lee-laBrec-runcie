@@ -16,6 +16,7 @@ function HomeScreen( {navigation} ) {
         title="Settings"
         onPress={() => navigation.navigate('Settings')}
         />
+        <Text style={{fontFamily: "Segoe UI"}}></Text>
         <StatusBar hidden />
         </ImageBackground>
     </View>

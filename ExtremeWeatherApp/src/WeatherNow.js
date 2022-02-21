@@ -215,7 +215,7 @@ class AirQuality extends Component {
           onValuesChangeFinish={this.props.updateParameter}
         />
         <Button 
-          style ={{alignItems: "center"}}
+    style ={{alignItems: "center"}}
           title="SAVE"
           color={"pink"}
           onPress={this.props.onParameterChange}
