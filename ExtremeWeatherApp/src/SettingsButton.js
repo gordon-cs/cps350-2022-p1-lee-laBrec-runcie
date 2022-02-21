@@ -1,10 +1,11 @@
 import { React, Component } from 'react';
 import { Button } from 'react-native';
-import { withNavigation } from 'react-navigation';
+import { useNavigation } from '@react-navigation/native';
 
-/* SettingsButton class - no Props needed*/
+/* SettingsButton class - no Props need to be provided*/
 class SettingsButton extends Component {
   render() {
+      const { navigation } = this.props;
     return (
       <Button
         title="Settings"
@@ -14,6 +15,9 @@ class SettingsButton extends Component {
   }
 }
 
-// withNavigation returns a component that wraps WeatherNow and passes in the
-// navigation prop
-export default withNavigation(SettingsButton);
+// Wrap and export
+export default function(props) {
+  const navigation = useNavigation();
+
+  return <SettingsButton {...props} navigation={navigation} />;
+} 

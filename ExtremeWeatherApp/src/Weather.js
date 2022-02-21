@@ -11,7 +11,6 @@ export default class ExtremeWeatherApp extends Component {
       //Temporary for prototype
       temperature: 0,
       value1: 0,
-
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getWeatherApi = this.getWeatherApi.bind(this);
