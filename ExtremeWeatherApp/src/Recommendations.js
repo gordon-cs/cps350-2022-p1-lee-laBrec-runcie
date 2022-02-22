@@ -9,6 +9,7 @@ export default class Recommendations extends Component {
     const rec3 = getRecommendation(this.props.dangerLevel);
     return (
     <View style={{backgroundColor: "#EA977B", borderRadius: 10}}>
+      <Text style={styles.header}>Recommended Activities Today</Text>
       <Text style={styles.text}>&#x2022; {rec1}</Text>
       {/* <Text style={styles.text}>&#x2022; {rec2}</Text>
       <Text style={styles.text}>&#x2022; {rec3}</Text> */}
@@ -30,6 +31,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: "2%",
     fontSize: 20,
   },
+  header: {
+    fontSize: 22,
+    textAlign: "center",
+    fontWeight: "700"
+  }
 });
 
 const reccomendationText = [
