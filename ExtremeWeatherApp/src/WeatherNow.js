@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { React, Component } from 'react';
 import {
   Text,
   View,
@@ -6,23 +6,29 @@ import {
   Image,
   SafeAreaView,
   TextInput,
-  Button,
-  Alert,
-  ScrollView,
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
+import SettingsButton from './SettingsButton';
+import Recommendations from'./Recommendations';
 
 export default class WeatherNow extends Component {
   render() {
     return (
-      <View style={{ flex: 1, flexDirection: "column",}}>
+      <View style={{ flex: 1, flexDirection: "column"}}>
+        <View style={{alignItems: 'flex-end', paddingTop: 15}}>
+          <SettingsButton />
+        </View>
+        <View style={{paddingBottom: 75}}>
         <Title />
+        </View>
         <SubTitle isLoading={this.props.isLoading}
                   weatherData={this.props.weatherData} />
         <Dial dangerLevel={this.props.dangerLevel}/>
         <WeatherInfo isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData} />
-        <Activities />
+        <View style={{padding: "2%"}}>
+          <Recommendations dangerLevel={35} />
+        </View>
       </View>
     );
   }
@@ -99,7 +105,7 @@ class Dial extends Component {
   }
 }
 
-/* WeatherInfo class shows Humidity, UVindex, Average Temperature, Precipitation.
+/* WeatherInfo class shows Wind, UVindex, Average Temperature, Precipitation.
  *
  * Props:
  *   isLoading - true when weatherData is being fetched
@@ -109,12 +115,12 @@ class Dial extends Component {
 class WeatherInfo extends Component {
   render() {
     let CurrTemp;
-    let Humidity;
+    let Wind;
     let UVindex;
     let Precipitation;
     if ( ! this.props.isLoading) {
       CurrTemp = this.props.weatherData.current.temp_f;
-      Humidity = this.props.weatherData.current.humidity;
+      Wind = this.props.weatherData.current.wind_mph;
       UVindex = this.props.weatherData.current.uv;
       Precipitation = this.props.weatherData.current.condition.text;
     }
@@ -141,17 +147,17 @@ class WeatherInfo extends Component {
             </Text>
           </View>
 
-          {/* Humidity */}
+          {/* Wind */}
           <View style= {styles.columnflex}>
             {/* Icon */}
             <Image style = {styles.image}
-                  source={require('./waterdrop.png')}/>
+                  source={require('./Wind.png')}/>
             <Text style={{flex: 1,}}>
               {/* Data */}
-              {Humidity}
+              {Wind} MPH
             </Text>
             <Text style = {{flex: 1,}}>
-              Humidity
+              Wind
             </Text>
           </View>
 
@@ -184,17 +190,6 @@ class WeatherInfo extends Component {
           </View>
 
         </View>
-      </View>
-    );
-  }
-}
-
-class Activities extends Component {
-  render() {
-    return (
-      <View style={{
-              flex:1,
-            }}>
       </View>
     );
   }

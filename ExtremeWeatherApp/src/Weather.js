@@ -9,7 +9,7 @@ export default class Weather extends Component {
     this.state = {
       isLoading: true,
       temperature: 0,
-      humidity: 0,
+      wind: 0,
       precipitation: 0,
       UVindex: 0,
       dangerLevel: 30,
@@ -22,13 +22,13 @@ export default class Weather extends Component {
   
   parameterChange() {
     this.forceUpdate();
-    this.calculateValue(this.state.temperature, this.state.humidity, this.state.precipitation, this.state.UVindex)
+    this.calculateValue(this.state.temperature, this.state.wind, this.state.precipitation, this.state.UVindex)
   }
 
   calculateValue(Temp, Humid, Precip, UV) {
     this.forceUpdate();
     let prefTemp = JSON.parse(localStorage.getItem('temprua'));
-    let prefHumid = JSON.parse(localStorage.getItem('humitidy'));
+    let prefHumid = JSON.parse(localStorage.getItem('wind'));
     let prefPrecip = JSON.parse(localStorage.getItem('precipitation'));
     let prefUV = JSON.parse(localStorage.getItem('uvindex'));
     finalValue = prefTemp[0] * 25;
@@ -59,7 +59,7 @@ export default class Weather extends Component {
         isLoading: false,
         weatherData: responseJson,
         temperature: responseJson.current.temp_f,
-        humidity: responseJson.current.humidity,
+        wind: responseJson.current.wind_mph,
         UVindex: responseJson.current.uv,
       });
     } catch (error) {
