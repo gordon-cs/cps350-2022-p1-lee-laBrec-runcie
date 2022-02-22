@@ -5,7 +5,7 @@ import { Image, Pressable } from 'react-native';
 export default class RefreshButton extends Component {
   render() {
     return (
-    <Pressable onPress={this.forceUpdate}>
+    <Pressable /* onPress={() => } */>
       <Image
         source={require('./RefreshIcon.png')}
         style={{
