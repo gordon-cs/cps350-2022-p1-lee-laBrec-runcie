@@ -10,7 +10,7 @@ export default class Weather extends Component {
       isLoading: true,
       temperature: 0,
       wind: 0,
-      precipitation: 0,
+      precipitation: "",
       UVindex: 0,
       dangerLevel: 30,
     };
@@ -35,7 +35,7 @@ export default class Weather extends Component {
     // Calculate scores for each factor
     const tempScore = 75 - (2.870265 * Temp) + ((0.0280494 * Temp * Temp));
     const windScore = 1.526 + (1.579 * Wind) + (-0.005 * Wind * Wind);
-    const uvScore = 12.5 * Precip;
+    const uvScore = 12.5 * UV;
     if (uvScore > 100) {
       uvScore = 100;
     }
@@ -53,6 +53,7 @@ export default class Weather extends Component {
                         + (windScore * windPerc)
                         + (uvScore * uvPerc)
                         + (precipScore * precipPerc));
+    console.log(dangerValue);
     return dangerValue;
     // this.setState({
     //   dangerLevel: 45,
@@ -80,6 +81,7 @@ export default class Weather extends Component {
         temperature: responseJson.current.temp_f,
         wind: responseJson.current.wind_mph,
         UVindex: responseJson.current.uv,
+        precipitation: responseJson.current.condition.text,
       });
     } catch (error) {
       console.error(error);
