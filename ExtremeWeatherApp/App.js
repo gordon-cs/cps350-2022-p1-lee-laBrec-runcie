@@ -7,6 +7,7 @@ import Weather from './src/Weather.js';
 import SettingState from './src/SettingState.js';
 import 'localstorage-polyfill';
 
+
 function HomeScreen( {navigation} ) {
   return (
     <View style={{flex:1,}}>

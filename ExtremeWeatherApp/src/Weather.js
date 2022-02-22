@@ -31,6 +31,7 @@ export default class Weather extends Component {
       dangerLevel: finalValue,
       isLoading: false,
     });
+    //testing
     console.log(this.state.dangerLevel);
   }
 

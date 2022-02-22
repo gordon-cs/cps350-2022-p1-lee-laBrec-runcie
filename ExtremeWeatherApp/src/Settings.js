@@ -63,17 +63,17 @@ class Title extends Component {
 
 class PrefSlider extends Component {
   render() {
-    let tempPref = 0;
-    if (tempPref != null) {
-      tempPref=this.props.tempPref;
+    let tempPref;
+    if (tempPref == null) {
+      tempPref = 0;
     }
+    tempPref = this.props.tempPref;
     return (
       <View style = {{
-              flex:1,
+              flex: 1,
               alignItems: 'center',
               paddingTop: "10%",
             }}> 
-        <Text>{tempPref}</Text>
         <MultiSlider values={[0]}
           enableLabel
           sliderLength={350}

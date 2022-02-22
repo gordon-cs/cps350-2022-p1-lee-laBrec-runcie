@@ -10,6 +10,8 @@ export default class SettingState extends Weather {
     super(props);
     this.state={
       isLoading: true,
+      newValue: 0,
+      tempPref: [0],
     }
     this.updateTempPref = this.updateTempPref.bind(this);
     this.updateHumidityPref = this.updateHumidityPref.bind(this);
@@ -35,9 +37,12 @@ export default class SettingState extends Weather {
   }
 
   handleParameterChange() {
+    this.updateParameter();
     super.parameterChange();
-    newValue = JSON.parse(localStorage.getItem('temprua'));
-    console.log(newValue);
+  }
+
+  updateParameter() {
+    let newValue = JSON.parse(localStorage.getItem('temprua'));
     this.setState({
       tempPref: newValue,
     });
@@ -51,7 +56,6 @@ export default class SettingState extends Weather {
                 updateUVPref={this.updateUVPref}
                 onParameterChange={this.handleParameterChange}
                 tempPref={this.state.tempPref}
-                sliderOnevalue={this.sliderOnevalue}
                 isLoading={this.state.isLoading}
                 />
     );
