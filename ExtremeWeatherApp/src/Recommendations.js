@@ -32,91 +32,34 @@ const styles = StyleSheet.create({
   },
 });
 
-// const reccomendationText = [
-//   noneText, 
-//   slightText, 
-//   moderateText, 
-//   considerableText, 
-//   severeText, 
-//   xtrmText
-// ];
 const reccomendationText = [
+  // None
+  [
+    "Go for a nice walk through the safe enviroment"
+  ],
 
+  // Slight
   [
-    "aaaa",
-    "a",
-    "aaa"
+    "Bring an umbrella"
   ],
+
+  // Moderate
   [
-    "bbbbb",
-    "b",
-    "bbbbbbbbb"
+    "Play a board game. Inside."
   ],
-  
+
+  // Considerable
   [
-    "cc",
-    "c",
-    "ccc"
+    "Consider purchasing life insurance"
   ],
-  
+
+  // Severe
   [
-    "xxx",
-    "x",
-    "xx"
-  ],
-  
-  [
-    "vv",
-    "v",
-    "vvv",
     "Hide under bed"
   ],
-  
+
+  // XTRM
   [
-    "dgfdggdf",
-    "dfdsfsdfsd",
-    "dfsdsfsdf",
     "Run to bunker",
   ],
-
 ];
-
-
-
-// const noneText = [
-//   "dgfdggdf",
-//   "dfdsfsdfsd",
-//   "dfsdsfsdf"
-// ];
-
-// const slightText = [
-//   "dgfdggdf",
-//   "dfdsfsdfsd",
-//   "dfsdsfsdf"
-// ];
-
-// const moderateText = [
-//   "dgfdggdf",
-//   "dfdsfsdfsd",
-//   "dfsdsfsdf"
-// ];
-
-// const considerableText = [
-//   "dgfdggdf",
-//   "dfdsfsdfsd",
-//   "dfsdsfsdf"
-// ];
-
-// const severeText = [
-//   "dgfdggdf",
-//   "dfdsfsdfsd",
-//   "dfsdsfsdf",
-//   "Hide under bed"
-// ];
-
-// const xtrmText = [
-//   "dgfdggdf",
-//   "dfdsfsdfsd",
-//   "dfsdsfsdf",
-//   "Run to bunker",
-// ];
