@@ -12,7 +12,6 @@ export default class Weather extends Component {
       wind: 0,
       precipitation: 0,
       UVindex: 0,
-      dangerLevel: 30,
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getWeatherApi = this.getWeatherApi.bind(this);
@@ -53,7 +52,9 @@ export default class Weather extends Component {
                         + (windScore * windPerc)
                         + (uvScore * uvPerc)
                         + (precipScore * precipPerc));
-    return dangerValue;
+    let Hello = 60;
+    localStorage.setItem('dangerLevel', JSON.stringify(Hello));
+    console.log(dangerValue);
     // this.setState({
     //   dangerLevel: 45,
     //   isLoading: true,
@@ -80,6 +81,7 @@ export default class Weather extends Component {
         temperature: responseJson.current.temp_f,
         wind: responseJson.current.wind_mph,
         UVindex: responseJson.current.uv,
+        precipitation: responseJson.current.condition.text,
       });
     } catch (error) {
       console.error(error);
