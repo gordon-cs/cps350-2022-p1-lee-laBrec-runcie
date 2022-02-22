@@ -34,7 +34,7 @@ function SettingsScreen( {navigation} ) {
           <SettingState />
           <Button
             style ={{alignItems: "center"}}
-            title="BACK"
+            title="HOME"
             color={"blue"}
             onPress={() => navigation.navigate('Home')}
           />
@@ -44,7 +44,6 @@ function SettingsScreen( {navigation} ) {
 }
 
 const Stack = createNativeStackNavigator();
-
 function App() {
   return (
     <NavigationContainer>

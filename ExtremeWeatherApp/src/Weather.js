@@ -12,29 +12,40 @@ export default class Weather extends Component {
       humidity: 0,
       precipitation: 0,
       UVindex: 0,
+      dangerLevel: 30,
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getWeatherApi = this.getWeatherApi.bind(this);
+    this.parameterChange = this.parameterChange.bind(this);
+    this.calculateValue = this.calculateValue.bind(this);
   }
   
-  async parameterChange() {
+  parameterChange() {
+    this.forceUpdate();
     this.calculateValue(this.state.temperature, this.state.humidity, this.state.precipitation, this.state.UVindex)
   }
 
-  async calculateValue(Temp, Humid, Precip, UV) {
+  calculateValue(Temp, Humid, Precip, UV) {
+    this.forceUpdate();
     let prefTemp = JSON.parse(localStorage.getItem('temprua'));
-    newValue = Temp * prefTemp[0];
-    localStorage.setItem('dangerLevel', JSON.stringify(newValue));
-    let finalValue = JSON.parse(localStorage.getItem('dangerLevel'));
-    this.state.dangerLevel = finalValue;
+    let prefHumid = JSON.parse(localStorage.getItem('humitidy'));
+    let prefPrecip = JSON.parse(localStorage.getItem('precipitation'));
+    let prefUV = JSON.parse(localStorage.getItem('uvindex'));
+    finalValue = prefTemp[0] * 25;
+    // Temp = 75 - (2.870265 * Temp) + ((0.0280494 * Temp) * (0.0280494 * Temp));
+    Temp = 65;
+    // localStorage.setItem('dangerLevel', JSON.stringify(Temp));
     this.setState({
-      dangerLevel: finalValue,
-      isLoading: false,
+      dangerLevel: 45,
+      isLoading: true,
     });
-    //testing
-    console.log(this.state.dangerLevel);
+    this.forceUpdate();
   }
 
+  shouldComponentUpdate() {
+    return true;
+  }
+  
   componentDidMount() {
     this.getWeatherApi();
   }

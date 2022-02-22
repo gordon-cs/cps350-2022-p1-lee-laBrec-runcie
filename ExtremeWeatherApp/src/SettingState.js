@@ -1,4 +1,5 @@
-import React, { Component, } from 'react';
+import React, { Component,} from 'react';
+import ReactDOM from 'react-dom'
 
 
 import Weather from './Weather';
@@ -8,10 +9,8 @@ import Settings from './Settings';
 export default class SettingState extends Weather {
   constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       isLoading: true,
-      newValue: 0,
-      tempPref: [0],
     }
     this.updateTempPref = this.updateTempPref.bind(this);
     this.updateHumidityPref = this.updateHumidityPref.bind(this);
@@ -21,31 +20,50 @@ export default class SettingState extends Weather {
   }
 
   updateTempPref(newValue) {
-    localStorage.setItem('temprua', JSON.stringify(newValue));
+    this.setState ({
+      tempPref: newValue,
+      isLoading: true,
+    });
   }
 
   updateHumidityPref(newValue) {
-    localStorage.setItem('humidity', JSON.stringify(newValue));
+    this.setState ({
+      humidityPref: newValue,
+      isLoading: true,
+    });
   }
 
   updatePrecipPref(newValue) {
-    localStorage.setItem('precipitation', JSON.stringify(newValue));
+    this.setState ({
+      precipPref: newValue,
+      isLoading: true,
+    });
   }
 
   updateUVPref(newValue) {
-    localStorage.setItem('UV', JSON.stringify(newValue));
+    this.setState ({
+      UVPref: newValue,
+      isLoading: true,
+    });
+  }
+
+  shouldComponentUpdate() {
+    return true;
   }
 
   handleParameterChange() {
-    this.updateParameter();
+    this.setParameters(this.state.tempPref, this.state.humidityPref, this.state.precipPref, this.state.UVPref);
     super.parameterChange();
+    this.setState ({
+      isLoading: false,
+    });
   }
 
-  updateParameter() {
-    let newValue = JSON.parse(localStorage.getItem('temprua'));
-    this.setState({
-      tempPref: newValue,
-    });
+  setParameters(tempLvl, humidLvl, precipLvl, uvLvl) {
+    localStorage.setItem('temprua', JSON.stringify(tempLvl));
+    localStorage.setItem('humidity', JSON.stringify(humidLvl));
+    localStorage.setItem('precipitation', JSON.stringify(precipLvl));
+    localStorage.setItem('uvindex', JSON.stringify(uvLvl));
   }
 
   render() {
@@ -55,7 +73,6 @@ export default class SettingState extends Weather {
                 updatePrecipPref={this.updatePrecipPref}
                 updateUVPref={this.updateUVPref}
                 onParameterChange={this.handleParameterChange}
-                tempPref={this.state.tempPref}
                 isLoading={this.state.isLoading}
                 />
     );

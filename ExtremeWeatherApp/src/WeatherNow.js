@@ -70,7 +70,16 @@ class SubTitle extends Component {
 
 class Dial extends Component {
   render() {
-    let dangervalue;
+    // let dangervalue = [];
+    // let dangerValue;
+    // let dangerValue1;
+    // if (JSON.parse(localStorage.getItem('dangerLevel')) === null) {
+    //   localStorage.setItem('dangerLevel', JSON.stringify(5))
+    // } else {
+    //   dangervalue[0] = JSON.parse(localStorage.getItem('dangerLevel'));
+    //   dangerValue = dangervalue[0];
+    // }
+    let dangervalue = 100;
     if ( ! this.props.isLoading ) {
       dangervalue = this.props.dangerLevel;
     }
