@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
 import SettingsButton from './SettingsButton';
+import Recommendations from'./Recommendations';
 
 // const [sliderOneChanging, setSliderOneChanging] = React.useState(false);
 // const [sliderOneValue, setSliderOneValue] = React.useState([5]);
@@ -30,6 +31,9 @@ export default class WeatherNow extends Component {
         <Dial dangerLevel={this.props.dangerLevel}/>
         <WeatherInfo isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData} />
+        <View style={{padding: "2%"}}>
+          <Recommendations dangerLevel={35} />
+        </View>
       </View>
     );
   }
