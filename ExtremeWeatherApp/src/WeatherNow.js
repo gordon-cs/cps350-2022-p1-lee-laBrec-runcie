@@ -6,13 +6,8 @@ import {
   Image,
   SafeAreaView,
   TextInput,
-  Button,
-  Alert,
-  ScrollView,
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import CustomMarker from './CustomMarker';
 import SettingsButton from './SettingsButton';
 
 // const [sliderOneChanging, setSliderOneChanging] = React.useState(false);
@@ -35,11 +30,6 @@ export default class WeatherNow extends Component {
         <Dial dangerLevel={this.props.dangerLevel}/>
         <WeatherInfo isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData} />
-        <AirQuality isLoading={this.props.isLoading}
-                    weatherData={this.props.weatherData}
-                    updateParameter={this.props.updateParameter}
-                    onParameterChange={this.props.onParameterChange} />
-        <Activities />
       </View>
     );
   }
@@ -107,7 +97,7 @@ class Dial extends Component {
   }
 }
 
-/* WeatherInfo class shows Humidity, UVindex, Average Temperature, Precipitation.
+/* WeatherInfo class shows Wind, UVindex, Average Temperature, Precipitation.
  *
  * Props:
  *   isLoading - true when weatherData is being fetched
@@ -117,12 +107,12 @@ class Dial extends Component {
 class WeatherInfo extends Component {
   render() {
     let CurrTemp = 100;
-    let Humidity = 100;
+    let Wind = 100;
     let UVindex = 100;
     let Precipitation = 100;
     if ( ! this.props.isLoading) {
       CurrTemp = this.props.weatherData.current.temp_f;
-      Humidity = this.props.weatherData.current.humidity;
+      Wind = this.props.weatherData.current.wind_mph;
       UVindex = this.props.weatherData.current.uv;
       Precipitation = "Yes";
     }
@@ -149,17 +139,17 @@ class WeatherInfo extends Component {
             </Text>
           </View>
 
-          {/* Humidity */}
+          {/* Wind */}
           <View style= {styles.columnflex}>
             {/* Icon */}
             <Image style = {styles.image}
-                  source={require('./waterdrop.png')}/>
+                  source={require('./Wind.png')}/>
             <Text style={{flex: 1,}}>
               {/* Data */}
-              {Humidity}
+              {Wind} MPH
             </Text>
             <Text style = {{flex: 1,}}>
-              Humidity
+              Wind
             </Text>
           </View>
 
@@ -192,51 +182,6 @@ class WeatherInfo extends Component {
           </View>
 
         </View>
-      </View>
-    );
-  }
-}
-
-class AirQuality extends Component {
-  render() {
-    return (
-      <View style = {{
-              flex:2,
-              alignItems: 'center',
-              paddingTop: "10%",
-            }}>
-        <MultiSlider values={[0]}
-          enableLabel
-          sliderLength={350}
-          step = {3}
-          min={0}
-          max={10}
-          optionsArray={sliderOptions}
-          customMarker={CustomMarker}
-          stepsAs={sliderLabels}
-          showSteps
-          showStepMarkers
-          showStepLabels
-          smoothSnapped
-          onValuesChangeFinish={this.props.updateParameter}
-        />
-        <Button 
-    style ={{alignItems: "center"}}
-          title="SAVE"
-          color={"pink"}
-          onPress={this.props.onParameterChange}
-        />
-      </View>
-    );
-  }
-}
-
-class Activities extends Component {
-  render() {
-    return (
-      <View style={{
-              flex:1,
-            }}>
       </View>
     );
   }
