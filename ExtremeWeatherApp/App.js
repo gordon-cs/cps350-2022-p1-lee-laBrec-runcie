@@ -4,6 +4,9 @@ import { ImageBackground, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Weather from './src/Weather.js';
+import SettingState from './src/SettingState.js';
+import 'localstorage-polyfill';
+
 
 function HomeScreen( {navigation} ) {
   return (
@@ -11,28 +14,36 @@ function HomeScreen( {navigation} ) {
         <ImageBackground source = {require('./src/gradientbackground.jpg')} 
           resizeMode="cover" 
           style = {{flex:1}}>
-        <Weather/>
-        <Text style={{fontFamily: "Segoe UI"}}></Text>
+        <Weather />
+        <Button
+          title="Settings"
+          onPress={() => navigation.navigate('Settings')}
+        />
         <StatusBar hidden />
         </ImageBackground>
     </View>
   )
 }
 
-function SettingsScreen() {
+function SettingsScreen( {navigation} ) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>      
+    <View style={{ flex: 1, justifyContent: 'center' }}>      
       <ImageBackground source = {require('./src/gradientbackground.jpg')} 
           resizeMode="cover" 
           style = {{flex:1}}>
-          <Text>Details Screen</Text>
+          <SettingState />
+          <Button
+            style ={{alignItems: "center"}}
+            title="HOME"
+            color={"blue"}
+            onPress={() => navigation.navigate('Home')}
+          />
       </ImageBackground>
     </View>
   )
 }
 
 const Stack = createNativeStackNavigator();
-
 function App() {
   return (
     <NavigationContainer>

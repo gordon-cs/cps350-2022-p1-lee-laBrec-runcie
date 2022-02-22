@@ -11,11 +11,6 @@ import RNSpeedometer from 'react-native-speedometer';
 import SettingsButton from './SettingsButton';
 import Recommendations from'./Recommendations';
 
-// const [sliderOneChanging, setSliderOneChanging] = React.useState(false);
-// const [sliderOneValue, setSliderOneValue] = React.useState([5]);
-// const sliderOneValuesChangeStart = () => setSliderOneChanging(true);
-// const sliderOneValuesChange = values => setSliderOneValue(values);
-
 export default class WeatherNow extends Component {
   render() {
     return (
@@ -62,7 +57,7 @@ class Title extends Component {
  */
 class SubTitle extends Component {
   render() {
-    let location = 100;
+    let location;
     if ( ! this.props.isLoading) {
       location = this.props.weatherData.location.name;
     }
@@ -81,6 +76,15 @@ class SubTitle extends Component {
 
 class Dial extends Component {
   render() {
+    // let dangervalue = [];
+    // let dangerValue;
+    // let dangerValue1;
+    // if (JSON.parse(localStorage.getItem('dangerLevel')) === null) {
+    //   localStorage.setItem('dangerLevel', JSON.stringify(5))
+    // } else {
+    //   dangervalue[0] = JSON.parse(localStorage.getItem('dangerLevel'));
+    //   dangerValue = dangervalue[0];
+    // }
     let dangervalue = 100;
     if ( ! this.props.isLoading ) {
       dangervalue = this.props.dangerLevel;
@@ -110,15 +114,15 @@ class Dial extends Component {
  */
 class WeatherInfo extends Component {
   render() {
-    let CurrTemp = 100;
-    let Wind = 100;
-    let UVindex = 100;
-    let Precipitation = 100;
+    let CurrTemp;
+    let Wind;
+    let UVindex;
+    let Precipitation;
     if ( ! this.props.isLoading) {
       CurrTemp = this.props.weatherData.current.temp_f;
       Wind = this.props.weatherData.current.wind_mph;
       UVindex = this.props.weatherData.current.uv;
-      Precipitation = "Yes";
+      Precipitation = this.props.weatherData.current.condition.text;
     }
     return (
       <View style = {{
@@ -202,43 +206,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-
-const sliderOptions = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-
-
-//TODO: Implement correctly
-const sliderLabels = [
-  {
-    index: 1,
-    stepLabel: "0",
-    prefix: "0",
-    suffix: "0",
-  },
-  {
-    index: 0,
-    stepLabel: "0",
-    prefix: "0",
-    suffix: "0",
-  },
-  {
-    index: 0,
-    stepLabel: "0",
-    prefix: "0",
-    suffix: "0",
-  },
-  {
-    index: 0,
-    stepLabel: "0",
-    prefix: "0",
-    suffix: "0",
-  },
-  {
-    index: 0,
-    stepLabel: "0",
-    prefix: "0",
-    suffix: "0",
-  }
-] 
 
 const dialLabels = [
   {

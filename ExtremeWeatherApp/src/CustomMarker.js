@@ -5,8 +5,8 @@ class CustomMarker extends React.Component {
   render() {
     return (
       <Image
-        style={styles.image}
-        source={
+        style = {styles.image}
+        source = {
           this.props.pressed ? require('./XTRMWFR.png') : require('./Temp.png')
         }
         resizeMode="contain"
