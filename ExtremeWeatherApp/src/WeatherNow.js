@@ -6,6 +6,7 @@ import {
   Image,
   SafeAreaView,
   TextInput,
+  Button,
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
 import SettingsButton from './SettingsButton';
@@ -92,19 +93,18 @@ class SubTitle extends Component {
 }
 
 class Dial extends Component {
+  update = () => {
+    // calling the forceUpdate() method
+    this.forceUpdate();
+  };
   render() {
-    // let dangervalue = [];
-    // let dangerValue;
-    // let dangerValue1;
-    // if (JSON.parse(localStorage.getItem('dangerLevel')) === null) {
-    //   localStorage.setItem('dangerLevel', JSON.stringify(5))
-    // } else {
-    //   dangervalue[0] = JSON.parse(localStorage.getItem('dangerLevel'));
-    //   dangerValue = dangervalue[0];
-    // }
-    let dangervalue = 100;
-    if ( ! this.props.isLoading ) {
-      dangervalue = this.props.dangerLevel;
+    let dangervalue = [];
+    let dangerValue;
+    if (JSON.parse(localStorage.getItem('dangerLevel')) === null) {
+      localStorage.setItem('dangerLevel', JSON.stringify(5))
+    } else {
+      dangervalue[0] = JSON.parse(localStorage.getItem('dangerLevel'));
+      dangerValue = dangervalue[0];
     }
     return (
       <View style={{
@@ -113,10 +113,16 @@ class Dial extends Component {
             }}>
         <SafeAreaView>
           <TextInput placeholder="Danger Level" textAlign='center'/>
-          <RNSpeedometer value={dangervalue} // Make dynamic 
+          <RNSpeedometer value={dangerValue} // Make dynamic 
             labels={dialLabels} 
             innerCircleStyle={{backgroundColor: "transparent"}}/>
         </SafeAreaView>
+        <Button 
+            style ={{alignItems: "center",}}
+            title="SAVE"
+            color={"pink"}
+            onPress={this.update}
+          />
       </View>
     );
   }

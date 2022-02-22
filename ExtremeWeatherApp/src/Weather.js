@@ -12,7 +12,6 @@ export default class Weather extends Component {
       wind: 0,
       precipitation: "",
       UVindex: 0,
-      dangerLevel: 30,
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.getWeatherApi = this.getWeatherApi.bind(this);
@@ -53,8 +52,6 @@ export default class Weather extends Component {
                         + (windScore * windPerc)
                         + (uvScore * uvPerc)
                         + (precipScore * precipPerc));
-    console.log(dangerValue);
-    return dangerValue;
     // this.setState({
     //   dangerLevel: 45,
     //   isLoading: true,
