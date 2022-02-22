@@ -13,7 +13,7 @@ export default class SettingState extends Weather {
       isLoading: true,
     }
     this.updateTempPref = this.updateTempPref.bind(this);
-    this.updateHumidityPref = this.updateHumidityPref.bind(this);
+    this.updateWindPref = this.updateWindPref.bind(this);
     this.updatePrecipPref = this.updatePrecipPref.bind(this);
     this.updateUVPref = this.updateUVPref.bind(this);
     this.handleParameterChange = this.handleParameterChange.bind(this);
@@ -26,9 +26,9 @@ export default class SettingState extends Weather {
     });
   }
 
-  updateHumidityPref(newValue) {
+  updateWindPref(newValue) {
     this.setState ({
-      humidityPref: newValue,
+      windPref: newValue,
       isLoading: true,
     });
   }
@@ -52,16 +52,16 @@ export default class SettingState extends Weather {
   }
 
   handleParameterChange() {
-    this.setParameters(this.state.tempPref, this.state.humidityPref, this.state.precipPref, this.state.UVPref);
+    this.setParameters(this.state.tempPref, this.state.windPref, this.state.precipPref, this.state.UVPref);
     super.parameterChange();
     this.setState ({
       isLoading: false,
     });
   }
 
-  setParameters(tempLvl, humidLvl, precipLvl, uvLvl) {
+  setParameters(tempLvl, windLvl, precipLvl, uvLvl) {
     localStorage.setItem('temprua', JSON.stringify(tempLvl));
-    localStorage.setItem('humidity', JSON.stringify(humidLvl));
+    localStorage.setItem('wind', JSON.stringify(windLvl));
     localStorage.setItem('precipitation', JSON.stringify(precipLvl));
     localStorage.setItem('uvindex', JSON.stringify(uvLvl));
   }
@@ -69,7 +69,7 @@ export default class SettingState extends Weather {
   render() {
     return (
       <Settings updateTempPref={this.updateTempPref}
-                updateHumidityPref={this.updateHumidityPref}
+                updateWindPref={this.updateWindPref}
                 updatePrecipPref={this.updatePrecipPref}
                 updateUVPref={this.updateUVPref}
                 onParameterChange={this.handleParameterChange}

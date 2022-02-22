@@ -25,10 +25,10 @@ export default class Weather extends Component {
     this.calculateValue(this.state.temperature, this.state.wind, this.state.precipitation, this.state.UVindex)
   }
 
-  calculateValue(Temp, Humid, Precip, UV) {
+  calculateValue(Temp, Wind, Precip, UV) {
     this.forceUpdate();
     let prefTemp = JSON.parse(localStorage.getItem('temprua'));
-    let prefHumid = JSON.parse(localStorage.getItem('wind'));
+    let prefWind = JSON.parse(localStorage.getItem('wind'));
     let prefPrecip = JSON.parse(localStorage.getItem('precipitation'));
     let prefUV = JSON.parse(localStorage.getItem('uvindex'));
     finalValue = prefTemp[0] * 25;
