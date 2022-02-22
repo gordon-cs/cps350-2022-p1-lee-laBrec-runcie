@@ -6,14 +6,10 @@ import {
   Image,
   SafeAreaView,
   TextInput,
-  Button,
-  Alert,
-  ScrollView,
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import CustomMarker from './CustomMarker';
 import SettingsButton from './SettingsButton';
+import Recommendations from'./Recommendations';
 
 // const [sliderOneChanging, setSliderOneChanging] = React.useState(false);
 // const [sliderOneValue, setSliderOneValue] = React.useState([5]);
@@ -35,11 +31,9 @@ export default class WeatherNow extends Component {
         <Dial dangerLevel={this.props.dangerLevel}/>
         <WeatherInfo isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData} />
-        <AirQuality isLoading={this.props.isLoading}
-                    weatherData={this.props.weatherData}
-                    updateParameter={this.props.updateParameter}
-                    onParameterChange={this.props.onParameterChange} />
-        <Activities />
+        <View style={{padding: "2%"}}>
+          <Recommendations dangerLevel={35} />
+        </View>
       </View>
     );
   }
@@ -192,51 +186,6 @@ class WeatherInfo extends Component {
           </View>
 
         </View>
-      </View>
-    );
-  }
-}
-
-class AirQuality extends Component {
-  render() {
-    return (
-      <View style = {{
-              flex:2,
-              alignItems: 'center',
-              paddingTop: "10%",
-            }}>
-        <MultiSlider values={[0]}
-          enableLabel
-          sliderLength={350}
-          step = {3}
-          min={0}
-          max={10}
-          optionsArray={sliderOptions}
-          customMarker={CustomMarker}
-          stepsAs={sliderLabels}
-          showSteps
-          showStepMarkers
-          showStepLabels
-          smoothSnapped
-          onValuesChangeFinish={this.props.updateParameter}
-        />
-        <Button 
-    style ={{alignItems: "center"}}
-          title="SAVE"
-          color={"pink"}
-          onPress={this.props.onParameterChange}
-        />
-      </View>
-    );
-  }
-}
-
-class Activities extends Component {
-  render() {
-    return (
-      <View style={{
-              flex:1,
-            }}>
       </View>
     );
   }
