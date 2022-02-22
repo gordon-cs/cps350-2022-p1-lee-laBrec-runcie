@@ -14,7 +14,21 @@ import Recommendations from './Recommendations';
 import RefreshButton from './RefreshButton';
 
 export default class WeatherNow extends Component {
+  update = () => {
+    // calling the forceUpdate() method
+    this.forceUpdate();
+  };
   render() {
+    let dangervalue = [];
+    let dangerValue;
+    if (JSON.parse(localStorage.getItem('dangerLevel')) === null) {
+      localStorage.setItem('dangerLevel', JSON.stringify(10))
+      dangervalue[0] = JSON.parse(localStorage.getItem('dangerLevel'));
+      dangerValue = dangervalue[0];
+    } else {
+      dangervalue[0] = JSON.parse(localStorage.getItem('dangerLevel'));
+      dangerValue = dangervalue[0];
+    }
     return (
       <View style={{ flex: 1, flexDirection: "column"}}>
         <View style={{paddingTop: 15, flexDirection: 'row', justifyContent: "space-between"}}>
@@ -31,7 +45,15 @@ export default class WeatherNow extends Component {
         <WeatherInfo isLoading={this.props.isLoading}
                     weatherData={this.props.weatherData} />
         <View style={{padding: "2%"}}>
-          <Recommendations dangerLevel={35} />
+          <View style ={{paddingRight: 300,}}>
+            <Button 
+                style ={{alignItems: "center",}}
+                title="SAVE"
+                color={"pink"}
+                onPress={this.update}
+              />
+          </View>
+          <Recommendations dangerLevel={dangerValue} />
         </View>
       </View>
     );
@@ -101,14 +123,14 @@ class Dial extends Component {
     let dangervalue = [];
     let dangerValue;
     if (JSON.parse(localStorage.getItem('dangerLevel')) === null) {
-      localStorage.setItem('dangerLevel', JSON.stringify(5))
+      localStorage.setItem('dangerLevel', JSON.stringify(10))
     } else {
       dangervalue[0] = JSON.parse(localStorage.getItem('dangerLevel'));
       dangerValue = dangervalue[0];
     }
     return (
       <View style={{
-              flex: 5,
+              flex: 6,
               alignItems: "center",
             }}>
         <SafeAreaView>
@@ -117,12 +139,14 @@ class Dial extends Component {
             labels={dialLabels} 
             innerCircleStyle={{backgroundColor: "transparent"}}/>
         </SafeAreaView>
-        <Button 
-            style ={{alignItems: "center",}}
-            title="SAVE"
-            color={"pink"}
-            onPress={this.update}
-          />
+        <View style ={{paddingRight: 300,}}>
+          <Button 
+              style ={{alignItems: "center",}}
+              title="SAVE"
+              color={"pink"}
+              onPress={this.update}
+            />
+          </View>
       </View>
     );
   }
@@ -149,7 +173,7 @@ class WeatherInfo extends Component {
     }
     return (
       <View style = {{
-              flex:1,
+              flex:2,
             }}>
         <View style = {{
                 flex: 1,

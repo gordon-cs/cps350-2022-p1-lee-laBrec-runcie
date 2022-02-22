@@ -52,11 +52,9 @@ export default class Weather extends Component {
                         + (windScore * windPerc)
                         + (uvScore * uvPerc)
                         + (precipScore * precipPerc));
-    // this.setState({
-    //   dangerLevel: 45,
-    //   isLoading: true,
-    // });
-    // this.forceUpdate();
+    // localStorage.setItem('dangerLevel', JSON.stringify(dangerValue))
+    let est = tempPerc*100;
+    localStorage.setItem('dangerLevel', JSON.stringify(est))
   }
 
   shouldComponentUpdate() {
