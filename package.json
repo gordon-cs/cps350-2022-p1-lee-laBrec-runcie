@@ -4,6 +4,7 @@
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
     "react-d3-speedometer": "^1.0.2",
+    "react-native-gesture-handler": "^2.2.0",
     "react-native-safe-area-context": "^3.4.1",
     "react-native-screens": "^3.12.0"
   }

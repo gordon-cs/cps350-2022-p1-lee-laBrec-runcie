@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { React, Component } from 'react';
 import {
   Text,
   View,
@@ -13,6 +13,7 @@ import {
 import RNSpeedometer from 'react-native-speedometer';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import CustomMarker from './CustomMarker';
+import SettingsButton from './SettingsButton';
 
 // const [sliderOneChanging, setSliderOneChanging] = React.useState(false);
 // const [sliderOneValue, setSliderOneValue] = React.useState([5]);
@@ -22,8 +23,13 @@ import CustomMarker from './CustomMarker';
 export default class WeatherNow extends Component {
   render() {
     return (
-      <View style={{ flex: 1, flexDirection: "column",}}>
+      <View style={{ flex: 1, flexDirection: "column"}}>
+        <View style={{alignItems: 'flex-end', paddingTop: 15}}>
+          <SettingsButton />
+        </View>
+        <View style={{paddingBottom: 75}}>
         <Title />
+        </View>
         <SubTitle isLoading={this.props.isLoading}
                   weatherData={this.props.weatherData} />
         <Dial dangerLevel={this.props.dangerLevel}/>
@@ -215,7 +221,7 @@ class AirQuality extends Component {
           onValuesChangeFinish={this.props.updateParameter}
         />
         <Button 
-          style ={{alignItems: "center"}}
+    style ={{alignItems: "center"}}
           title="SAVE"
           color={"pink"}
           onPress={this.props.onParameterChange}
