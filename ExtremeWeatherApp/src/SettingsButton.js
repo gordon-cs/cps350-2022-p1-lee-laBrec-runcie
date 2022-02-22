@@ -1,7 +1,6 @@
 import { React, Component } from 'react';
-import { Image, Text, Pressable } from 'react-native';
+import { Image, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 /* SettingsButton class - no Props need to be provided*/
 class SettingsButton extends Component {
