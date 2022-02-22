@@ -1,16 +1,23 @@
 import { React, Component } from 'react';
-import { Button } from 'react-native';
+import { Image, Text, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 /* SettingsButton class - no Props need to be provided*/
 class SettingsButton extends Component {
   render() {
       const { navigation } = this.props;
     return (
-      <Button
-        title="Settings"
-        onPress={() => this.props.navigation.navigate('Settings')}
+    <Pressable onPress={() => navigation.navigate('Settings')}>
+      <Image
+        source={require('./SettingsIcon.png')}
+        style={{
+          resizeMode: "cover",
+          height: 50,
+          width: 50,
+        }}
       />
+    </Pressable>
     );
   }
 }

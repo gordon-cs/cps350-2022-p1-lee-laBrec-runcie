@@ -23,9 +23,13 @@ import SettingsButton from './SettingsButton';
 export default class WeatherNow extends Component {
   render() {
     return (
-      <View style={{ flex: 1, flexDirection: "column",}}>
+      <View style={{ flex: 1, flexDirection: "column"}}>
+        <View style={{alignItems: 'flex-end', paddingTop: 15}}>
+          <SettingsButton />
+        </View>
+        <View style={{paddingBottom: 75}}>
         <Title />
-        <SettingsButton />
+        </View>
         <SubTitle isLoading={this.props.isLoading}
                   weatherData={this.props.weatherData} />
         <Dial dangerLevel={this.props.dangerLevel}/>
