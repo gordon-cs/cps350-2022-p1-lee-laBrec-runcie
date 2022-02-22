@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Image } from 'react-native';
 
-class CustomMarker extends React.Component {
+class TempMarker extends React.Component {
   render() {
     return (
       <Image
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomMarker;
+export default TempMarker;

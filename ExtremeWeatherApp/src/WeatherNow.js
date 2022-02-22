@@ -19,7 +19,7 @@ export default class WeatherNow extends Component {
           <SettingsButton />
         </View>
         <View style={{paddingBottom: 75}}>
-        <Title />
+          <Title />
         </View>
         <SubTitle isLoading={this.props.isLoading}
                   weatherData={this.props.weatherData} />

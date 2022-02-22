@@ -7,7 +7,12 @@ import {
   Button,
 } from 'react-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import CustomMarker from './CustomMarker';
+import PrecipitationMarker from './PrecipitationMarker';
+import TempMarker from './TempMarker';
+import UVMarker from './UVMarker';
+import WindMarker from './WindMarker';
+
+
 
 export default class Settings extends Component {
   render() {
@@ -15,12 +20,12 @@ export default class Settings extends Component {
       <View style={{ flex: 1, flexDirection: "column",}}>
         <Title />
         <TempSlider updateTempPref={this.props.updateTempPref}/> 
-        <HumidSlider  updateHumidityPref={this.props.updateHumidityPref}/> 
+        <WindSlider  updateWindPref={this.props.updateWindPref}/> 
         <PrecipSlider updatePrecipPref={this.props.updatePrecipPref}/>
         <UVSlider updateUVPref={this.props.updateUVPref}/> 
-        <View style = {{flex:1}}>
+        <View style = {{flex:0.5}}>
           <Button 
-            style ={{alignItems: "center"}}
+            style ={{alignItems: "center",}}
             title="SAVE"
             color={"pink"}
             onPress={this.props.onParameterChange}
@@ -36,11 +41,11 @@ class Title extends Component {
   render() {
     return (
       <View style = {{
-              flex: 2,
+              flex: 1.5,
               alignItems: "center",
             }}>
         <Image source = {require('./XTRMWFR.png')}/>
-        <Text>
+        <Text style = {{fontSize: 30,}}>
           Preferences
         </Text>
       </View>
@@ -70,24 +75,27 @@ class TempSlider extends Component {
           min={0}
           max={10}
           optionsArray={sliderOptions}
-          customMarker={CustomMarker}
+          customMarker={TempMarker}
           showSteps
           showStepMarkers
           showStepLabels
           onValuesChangeFinish={this.props.updateTempPref}
         />
+        <Text style = {{fontSize: 20,}}>
+          Temperature 
+        </Text>
       </View>
     );
   }
 }
 
-class HumidSlider extends Component {
+class WindSlider extends Component {
   render() {
     let Pref = [];
     Pref[0] = 0.5;
-    let Pref1 = JSON.parse(localStorage.getItem('humidity'));
+    let Pref1 = JSON.parse(localStorage.getItem('wind'));
     if (Pref[0] !== 0.5 || Pref1 !== null) {
-      Pref = JSON.parse(localStorage.getItem('humidity'));
+      Pref = JSON.parse(localStorage.getItem('wind'));
     }
     return (
       <View style = {{
@@ -103,12 +111,15 @@ class HumidSlider extends Component {
           min={0}
           max={10}
           optionsArray={sliderOptions}
-          customMarker={CustomMarker}
+          customMarker={WindMarker}
           showSteps
           showStepMarkers
           showStepLabels
-          onValuesChangeFinish={this.props.updateHumidityPref}
+          onValuesChangeFinish={this.props.updateWindPref}
         />
+        <Text style = {{fontSize: 20,}}>
+          Wind 
+        </Text>
       </View>
     );
   }
@@ -136,12 +147,15 @@ class PrecipSlider extends Component {
           min={0}
           max={10}
           optionsArray={sliderOptions}
-          customMarker={CustomMarker}
+          customMarker={PrecipitationMarker}
           showSteps
           showStepMarkers
           showStepLabels
           onValuesChangeFinish={this.props.updatePrecipPref}
         />
+        <Text style = {{fontSize: 20,}}>
+          Precipitation 
+        </Text>
       </View>
     );
   }
@@ -169,12 +183,15 @@ class UVSlider extends Component {
           min={0}
           max={10}
           optionsArray={sliderOptions}
-          customMarker={CustomMarker}
+          customMarker={UVMarker}
           showSteps
           showStepMarkers
           showStepLabels
           onValuesChangeFinish={this.props.updateUVPref}
         />
+        <Text style = {{fontSize: 20,}}>
+          UV 
+        </Text>
       </View>
     );
   }
