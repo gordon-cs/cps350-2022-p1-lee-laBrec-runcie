@@ -27,19 +27,38 @@ export default class Weather extends Component {
 
   calculateValue(Temp, Wind, Precip, UV) {
     this.forceUpdate();
-    let prefTemp = JSON.parse(localStorage.getItem('temprua'));
-    let prefWind = JSON.parse(localStorage.getItem('wind'));
-    let prefPrecip = JSON.parse(localStorage.getItem('precipitation'));
-    let prefUV = JSON.parse(localStorage.getItem('uvindex'));
-    finalValue = prefTemp[0] * 25;
-    // Temp = 75 - (2.870265 * Temp) + ((0.0280494 * Temp) * (0.0280494 * Temp));
-    Temp = 65;
-    // localStorage.setItem('dangerLevel', JSON.stringify(Temp));
-    this.setState({
-      dangerLevel: 45,
-      isLoading: true,
-    });
-    this.forceUpdate();
+    const prefTemp = JSON.parse(localStorage.getItem('temprua'));
+    const prefWind = JSON.parse(localStorage.getItem('wind'));
+    const prefUV = JSON.parse(localStorage.getItem('uvindex'));
+    const prefPrecip = JSON.parse(localStorage.getItem('precipitation'));
+
+    // Calculate scores for each factor
+    const tempScore = 75 - (2.870265 * Temp) + ((0.0280494 * Temp * Temp));
+    const windScore = 1.526 + (1.579 * Wind) + (-0.005 * Wind * Wind);
+    const uvScore = 12.5 * Precip;
+    if (uvScore > 100) {
+      uvScore = 100;
+    }
+    const precipScore = getPrecipScore(Precip);
+
+    // Calculate percentages of total score for each factor
+    const factorSum = prefTemp[0] + prefWind[0] 
+                    + prefUV[0] + prefPrecip[0];
+    const tempPerc = prefTemp[0]/factorSum;
+    const windPerc = prefWind[0]/factorSum;
+    const uvPerc = prefUV[0]/factorSum;
+    const precipPerc = prefPrecip[0]/factorSum;
+
+    const dangerValue = ((tempScore*tempPerc) 
+                        + (windScore * windPerc)
+                        + (uvScore * uvPerc)
+                        + (precipScore * precipPerc));
+    return dangerValue;
+    // this.setState({
+    //   dangerLevel: 45,
+    //   isLoading: true,
+    // });
+    // this.forceUpdate();
   }
 
   shouldComponentUpdate() {
@@ -74,5 +93,107 @@ export default class Weather extends Component {
                   dangerLevel={this.state.dangerLevel}
                   />
     );
+  }
+}
+
+function getPrecipScore(conditionText) {
+  if ((conditionText == "Sunny") || (conditionText == "Clear")) {
+      return 0;
+  } else if (conditionText == "Partly cloudy") {
+      return 5;
+  } else if (conditionText == "Cloudy") {
+      return 10;
+  } else if (conditionText == "Overcast") {
+      return 15;
+  } else if (conditionText == "Mist") {
+      return 40;
+  } else if (conditionText == "Patchy rain possible") {
+      return 20;
+  } else if (conditionText == "Patchy snow possible") {
+      return 25;
+  } else if (conditionText == "Patchy sleet possible") {
+      return 22;
+  } else if (conditionText == "Patchy freezing drizzle possible") {
+      return 22;
+  } else if (conditionText == "Thundery outbreaks possible") {
+      return 30;
+  } else if (conditionText == "Blowing snow") {
+      return 60;
+  } else if (conditionText == "Blizzard") {
+      return 100;
+  } else if (conditionText == "Fog") {
+      return 75;
+  } else if (conditionText == "Freezing fog") {
+      return 80;
+  } else if (conditionText == "Patchy light drizzle") {
+      return 20;
+  } else if (conditionText == "Light drizzle") {
+      return 22;
+  } else if (conditionText == "Freezing drizzle") {
+      return 30;
+  } else if (conditionText == "Heavy freezing drizzle") {
+      return 35;
+  } else if (conditionText == "Patchy light rain") {
+      return 28;
+  } else if (conditionText == "Light rain") {
+      return 32;
+  } else if (conditionText == "Moderate rain at times") {
+      return 38;
+  } else if (conditionText == "Moderate rain") {
+      return 45;
+  } else if (conditionText == "Heavy rain at times") {
+      return 50;
+  } else if (conditionText == "Heavy rain") {
+      return 60;
+  } else if (conditionText == "Light freezing rain") {
+      return 42;
+  } else if (conditionText == "Moderate or heavy freezing rain") {
+      return 58;
+  } else if (conditionText == "Light sleet") {
+      return 55;
+  } else if (conditionText == "Moderate or heavy sleet") {
+      return 68;
+  } else if (conditionText == "Patchy light snow") {
+      return 47;
+  } else if (conditionText == "Light snow") {
+      return 52;
+  } else if (conditionText == "Patchy moderate snow") {
+      return 56;
+  } else if (conditionText == "Moderate snow") {
+      return 65;
+  } else if (conditionText == "Patchy heavy snow") {
+      return 70;
+  } else if (conditionText == "Heavy snow") {
+      return 75;
+  } else if (conditionText == "Ice pellets") {
+      return 75;
+  } else if (conditionText == "Light rain shower") {
+      return 25;
+  } else if (conditionText == "Moderate or heavy rain shower") {
+      return 40;
+  } else if (conditionText == "Torrential rain shower") {
+      return 65;
+  } else if (conditionText == "Light sleet showers") {
+      return 50;
+  } else if (conditionText == "Moderate or heavy sleet showers") {
+      return 63;
+  } else if (conditionText == "Light snow showers") {
+      return 47;
+  } else if (conditionText == "Moderate or heavy snow showers") {
+      return 68;
+  } else if (conditionText == "Light showers of ice pellets") {
+      return 70;
+  } else if (conditionText == "Moderate or heavy showers of ice pellets") {
+      return 75;
+  } else if (conditionText == "Patchy light rain with thunder") {
+      return 38;
+  } else if (conditionText == "Moderate or heavy rain with thunder") {
+      return 62;
+  } else if (conditionText == "Patchy light snow with thunder") {
+      return 57;
+  } else if (conditionText == "Moderate or heavy snow with thunder") {
+      return 85;
+  } else {
+      return 0;
   }
 }
