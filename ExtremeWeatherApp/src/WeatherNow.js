@@ -9,18 +9,21 @@ import {
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
 import SettingsButton from './SettingsButton';
-import Recommendations from'./Recommendations';
+import Recommendations from './Recommendations';
+import RefreshButton from './RefreshButton';
 
 export default class WeatherNow extends Component {
   render() {
     return (
       <View style={{ flex: 1, flexDirection: "column"}}>
-        <View style={{alignItems: 'flex-end', paddingTop: 15}}>
+        <View style={{paddingTop: 15, flexDirection: 'row', justifyContent: "space-between"}}>
+          <RefreshButton />
           <SettingsButton />
         </View>
         <View style={{paddingBottom: 75}}>
         <Title />
         </View>
+        <CatchPhrase />
         <SubTitle isLoading={this.props.isLoading}
                   weatherData={this.props.weatherData} />
         <Dial dangerLevel={this.props.dangerLevel}/>
@@ -43,6 +46,20 @@ class Title extends Component {
               alignItems: "center",
             }}>
         <Image source = {require('./XTRMWFR.png')}/>
+      </View>
+    );
+  }
+}
+
+/* CatchPhrase class - no Props needed*/
+class CatchPhrase extends Component {
+  render() {
+    return (
+        <View style = {{
+                flex: 1,
+                alignItems: "center",
+              }}>
+        <Image source = {require("./itsDangerousOutThere.png")}/>
       </View>
     );
   }

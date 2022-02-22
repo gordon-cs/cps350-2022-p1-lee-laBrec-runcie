@@ -1,5 +1,5 @@
 import { React, Component } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 /* Recommendations class - no Props need to be provided*/
 export default class Recommendations extends Component {

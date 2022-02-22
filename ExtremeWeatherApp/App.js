@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, Text, View, Button } from 'react-native';
+import { ImageBackground, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Weather from './src/Weather.js';
@@ -15,10 +15,6 @@ function HomeScreen( {navigation} ) {
           resizeMode="cover" 
           style = {{flex:1}}>
         <Weather />
-        <Button
-          title="Settings"
-          onPress={() => navigation.navigate('Settings')}
-        />
         <StatusBar hidden />
         </ImageBackground>
     </View>
@@ -32,12 +28,6 @@ function SettingsScreen( {navigation} ) {
           resizeMode="cover" 
           style = {{flex:1}}>
           <SettingState />
-          <Button
-            style ={{alignItems: "center"}}
-            title="HOME"
-            color={"blue"}
-            onPress={() => navigation.navigate('Home')}
-          />
       </ImageBackground>
     </View>
   )
