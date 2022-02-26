@@ -7,15 +7,15 @@ import {
   SafeAreaView,
   TextInput,
   Button,
+  Pressable
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
 import SettingsButton from './SettingsButton';
 import Recommendations from './Recommendations';
-import RefreshButton from './RefreshButton';
 
 export default class WeatherNow extends Component {
   update = () => {
-    // calling the forceUpdate() method
+    // Calling the forceUpdate() method
     this.forceUpdate();
   };
   render() {
@@ -32,7 +32,17 @@ export default class WeatherNow extends Component {
     return (
       <View style={{ flex: 1, flexDirection: "column"}}>
         <View style={{paddingTop: 15, flexDirection: 'row', justifyContent: "space-between"}}>
-          <RefreshButton />
+          {/* Refresh Button */}
+          <Pressable onPress={() => this.forceUpdate()}>
+            <Image
+              source={require('./RefreshIcon.png')}
+              style={{
+                resizeMode: "cover",
+                height: 48,
+                width: 48,
+              }}
+            />
+          </Pressable>
           <SettingsButton />
         </View>
         <View style={{paddingBottom: 75}}>
@@ -46,12 +56,6 @@ export default class WeatherNow extends Component {
                     weatherData={this.props.weatherData} />
         <View style={{padding: "2%"}}>
           <View style ={{paddingRight: 300,}}>
-            <Button 
-                style ={{alignItems: "center",}}
-                title="SAVE"
-                color={"pink"}
-                onPress={this.update}
-              />
           </View>
           <Recommendations dangerLevel={dangerValue} />
         </View>
@@ -140,12 +144,6 @@ class Dial extends Component {
             innerCircleStyle={{backgroundColor: "transparent"}}/>
         </SafeAreaView>
         <View style ={{paddingRight: 300,}}>
-          <Button 
-              style ={{alignItems: "center",}}
-              title="SAVE"
-              color={"pink"}
-              onPress={this.update}
-            />
           </View>
       </View>
     );
