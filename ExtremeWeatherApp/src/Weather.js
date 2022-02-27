@@ -48,7 +48,7 @@ export default class Weather extends Component {
     const uvPerc = prefUV[0]/factorSum;
     const precipPerc = prefPrecip[0]/factorSum;
 
-    const dangerValue = ((tempScore*tempPerc) 
+    const dangerValue = ((tempScore * tempPerc) 
                         + (windScore * windPerc)
                         + (uvScore * uvPerc)
                         + (precipScore * precipPerc));
@@ -64,18 +64,31 @@ export default class Weather extends Component {
   }
 
   async getWeatherApi() {
-    // TODO: Move API key off of repo
     try {
-      let response = await fetch ("http://api.weatherapi.com/v1/current.json?key=a23ef8a8a6194ac4a6d194322220102&q=01984&aqi=no");
-      let responseJson = await response.json();
-      this.setState({
-        isLoading: false,
-        weatherData: responseJson,
-        temperature: responseJson.current.temp_f,
-        wind: responseJson.current.wind_mph,
-        UVindex: responseJson.current.uv,
+        let locationArray = [];
+        let location = "01984";
+        // if (JSON.parse(localStorage.getItem("location")) === null) {
+        //     // Default Wenham, MA
+        //     localStorage.setItem("location", "01984");
+        //     locationArray[0] = JSON.parse(localStorage.getItem("location"));
+        //     location = locationArray[0];   
+        // } else {
+        //     locationArray[0] = JSON.parse(localStorage.getItem("location"));
+        //     location = locationArray[0];
+        //     }
+        let query = "http://api.weatherapi.com/v1/current.json?key=a23ef8a8a6194ac4a6d194322220102&q=" 
+                    + location + "&aqi=no";
+                    
+        let response = await fetch (query);
+        let responseJson = await response.json();
+        this.setState({
+            isLoading: false,
+            weatherData: responseJson,
+            temperature: responseJson.current.temp_f,
+            wind: responseJson.current.wind_mph,
+            UVindex: responseJson.current.uv,
         precipitation: responseJson.current.condition.text,
-      });
+    });
     } catch (error) {
       console.error(error);
     }
@@ -86,7 +99,7 @@ export default class Weather extends Component {
       <WeatherNow isLoading={this.state.isLoading}
                   weatherData={this.state.weatherData}
                   dangerLevel={this.state.dangerLevel}
-                  />
+      />
     );
   }
 }

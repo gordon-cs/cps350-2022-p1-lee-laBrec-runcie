@@ -26,6 +26,5 @@ class SettingsButton extends Component {
 // Wrap and export
 export default function(props) {
   const navigation = useNavigation();
-
   return <SettingsButton {...props} navigation={navigation} />;
 } 
