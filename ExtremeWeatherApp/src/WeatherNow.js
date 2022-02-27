@@ -55,7 +55,7 @@ export default class WeatherNow extends Component {
         </View>
 
         {/* 2 */}
-        <View style={{ flex: 1.5,}}>
+        <View style={{ flex: 2,}}>
           <Title isLoading={this.props.isLoading}
                   weatherData={this.props.weatherData}/>
         </View>
@@ -66,16 +66,15 @@ export default class WeatherNow extends Component {
         </View>
 
         {/* 4 */}
-        <View style={{ flex: 0.7,}}></View>
+        <View style={{ flex: 1.5,}}></View>
 
         {/* 5 */}
-        <View style={{ flex: 2, flexDirection: "column"}}>
-          <View style={{ flex: 1, flexDirection: "column",}}>
-            <WeatherInfo isLoading={this.props.isLoading}
-                      weatherData={this.props.weatherData} />
-            <View style={{ flex: 0.2,}}></View>
-            <Recommendations dangerLevel={dangerValue} />
-          </View>
+        <View style={{ flex: 1, flexDirection: "column"}}>
+          <WeatherInfo isLoading={this.props.isLoading}
+                        weatherData={this.props.weatherData} />
+        </View>
+        <View style={{ flex: 2,}}>
+          <Recommendations dangerLevel={dangerValue} />
         </View>
 
       </View>
@@ -102,12 +101,12 @@ class Title extends Component {
         <View style = {{flex: 1.5}}>
           <Image style source = {require("./itsDangerousOutThere.png")}/>
         </View>
-        <View style = {{flex: 2}}>
+        <View style = {{flex: 0.7}}>
           <Image source = {require("./line.png")}/>
         </View>
         <View style = {{flex: 1.5, alignItems:'flex-start'}}>
-          <Text style={{fontFamily: 'sans-serif-medium', fontSize: 25}}>
-            {location}, MA
+          <Text style={{fontFamily: 'sans-serif-medium', fontSize: 25,}}>
+            {location}
           </Text>
         </View>
       </View>
@@ -115,30 +114,6 @@ class Title extends Component {
   }
 }
 
-/* SubTitle class shows location.
- *
- * Props:
- *   isLoading - true when weatherData is being fetched
- *   weatherData - JSON returned by fetch from weatherAPI,
- *         but only defined when isLoading is false
- */
-class SubTitle extends Component {
-  render() {
-    let location;
-    if ( ! this.props.isLoading) {
-      location = this.props.weatherData.location.name;
-    }
-    return (
-      <View style={{
-              alignItems: "center",
-            }}>
-        <Text style={{fontFamily: 'sans-serif-medium', fontSize: 25}}>
-          {location}, MA
-        </Text>
-      </View>
-    );
-  }
-}
 
 class Dial extends Component {
   update = () => {
@@ -263,7 +238,7 @@ class WeatherInfo extends Component {
 
 const styles = StyleSheet.create({
   image: {
-    flex: 2, 
+    flex: 1.5, 
     resizeMode: "contain",
   },
   columnflex: {
@@ -279,7 +254,7 @@ const styles = StyleSheet.create({
   },
   weatherInfoText: {
     flex: 1, 
-    fontSize: 12, 
+    fontSize: 15, 
     fontFamily: "sans-serif-medium", 
     color: "white"
   }
