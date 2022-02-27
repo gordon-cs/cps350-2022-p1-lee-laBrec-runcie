@@ -27,11 +27,7 @@ export default class Settings extends Component {
         <PrecipSlider updatePrecipPref={this.props.updatePrecipPref}/>
         <UVSlider updateUVPref={this.props.updateUVPref}/> 
         <View style = {{flex:1}}>
-          <Pressable style ={{alignItems: "center",}} 
-                      onPress={this.props.onParameterChange}>
-            <Image source={require('./assets/savepreferences.png')}
-                  style={{resizeMode: "cover",}}/>
-          </Pressable>
+          <SaveButton onParameterChange={this.props.onParameterChange} />
         </View>
         <View style={{ flex: 1.5 }}></View>
       </View>
@@ -69,7 +65,7 @@ class TempSlider extends Component {
     let tempPref = [];
     tempPref[0] = 0.5;
     let tempPref1 = JSON.parse(localStorage.getItem('temprua'));
-    if (tempPref[0] !== 0.5 || tempPref1 !== null) {
+    if (tempPref[0] !== 0.5 || tempPref1 !== null ) {
       tempPref = JSON.parse(localStorage.getItem('temprua'));
     }
     let length = 300;
@@ -221,6 +217,18 @@ class UVSlider extends Component {
             onValuesChangeFinish={this.props.updateUVPref}/>
         </View>
       </View>
+    );
+  }
+}
+
+class SaveButton extends Component {
+  render () {
+    return (
+      <Pressable style ={{alignItems: "center",}} 
+                  onPress={this.props.onParameterChange}>
+        <Image source={require('./assets/savepreferences.png')}
+                  style={{resizeMode: "cover",}}/>
+      </Pressable>
     );
   }
 }

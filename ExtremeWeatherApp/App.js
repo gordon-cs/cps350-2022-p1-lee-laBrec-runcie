@@ -9,6 +9,10 @@ import 'localstorage-polyfill';
 
 
 function HomeScreen( {navigation} ) {
+  localStorage.setItem('temprua', JSON.stringify(0.5));
+  localStorage.setItem('wind', JSON.stringify(0.5));
+  localStorage.setItem('precipitation', JSON.stringify(0.5));
+  localStorage.setItem('uvindex', JSON.stringify(0.5));
   return (
     <View style={{flex:1,}}>
         <ImageBackground source = {require('./src/assets/gradientbackground.jpg')} 
