@@ -8,11 +8,13 @@ export default class Recommendations extends Component {
     const rec2 = getRecommendation(this.props.dangerLevel);
     const rec3 = getRecommendation(this.props.dangerLevel);
     return (
-    <View style={{backgroundColor: "#EA977B", borderRadius: 10}}>
-      <Text style={styles.header}>Recommended Activities Today</Text>
-      <Text style={styles.text}>&#x2022; {rec1}</Text>
-      {/* <Text style={styles.text}>&#x2022; {rec2}</Text>
-      <Text style={styles.text}>&#x2022; {rec3}</Text> */}
+    <View style={{ flex: 3,}}>
+      <View style={{backgroundColor: "#EA977B", borderRadius: 10}}>
+        <Text style={styles.header}>Recommended Activities Today</Text>
+        <Text style={styles.text}>&#x2022; {rec1}</Text>
+        {/* <Text style={styles.text}>&#x2022; {rec2}</Text>
+        <Text style={styles.text}>&#x2022; {rec3}</Text> */}
+      </View>
     </View>
     );
   }
