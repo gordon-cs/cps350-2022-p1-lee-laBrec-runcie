@@ -105,7 +105,7 @@ class Title extends Component {
         <View style = {{flex: 2}}>
           <Image source = {require("./line.png")}/>
         </View>
-        <View style = {{flex: 1.5, paddingTop: -10,}}>
+        <View style = {{flex: 1.5, alignItems:'flex-start'}}>
           <Text style={{fontFamily: 'sans-serif-medium', fontSize: 25}}>
             {location}, MA
           </Text>
