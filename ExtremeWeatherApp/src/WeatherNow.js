@@ -6,7 +6,6 @@ import {
   Image,
   SafeAreaView,
   TextInput,
-  Button,
   Pressable
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
@@ -138,10 +137,12 @@ class Dial extends Component {
               alignItems: "center",
             }}>
         <SafeAreaView>
-          <TextInput placeholder="Danger Level" textAlign='center'/>
-          <RNSpeedometer value={dangerValue} // Make dynamic 
+          <RNSpeedometer value={dangerValue}
             labels={dialLabels} 
-            innerCircleStyle={{backgroundColor: "transparent"}}/>
+            innerCircleStyle={{backgroundColor: "#6D6D6D", height: 75, width: 150}}
+            needleImage={require('./dial/arrow.png')}
+            imageWrapperStyle={{paddingTop: 0}}
+            labelNoteStyle={{backgroundColor: '#343434', padding: 10, borderRadius: 20}}/>
         </SafeAreaView>
         <View style ={{paddingRight: 300,}}>
           </View>
