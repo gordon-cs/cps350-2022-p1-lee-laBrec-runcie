@@ -6,7 +6,14 @@ export default class Recommendations extends Component {
   render() {
     const rec1 = getRecommendation(this.props.dangerLevel);
     const rec2 = getRecommendation(this.props.dangerLevel);
+    // Avoid duplicates
+    while (rec2 == rec1) {
+       rec2 = getRecommendation(this.props.dangerLevel);
+    }
     const rec3 = getRecommendation(this.props.dangerLevel);
+    while ((rec3 == rec1) || (rec3 == rec2)) {
+      rec3 = getRecommendation(this.props.dangerLevel);
+   }
     return (
     <View style={{backgroundColor: "#EA977B", borderRadius: 10}}>
       <Text style={styles.header}>Recommended Activities Today</Text>
