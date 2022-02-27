@@ -1,5 +1,5 @@
 import { React, Component } from 'react';
-import { Image, Pressable } from 'react-native';
+import { Image, Pressable, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 /* SettingsButton class - no Props need to be provided*/
@@ -7,16 +7,18 @@ class SettingsButton extends Component {
   render() {
       const { navigation } = this.props;
     return (
-    <Pressable onPress={() => navigation.navigate('Settings')}>
-      <Image
-        source={require('./SettingsIcon.png')}
-        style={{
-          resizeMode: "cover",
-          height: 50,
-          width: 50,
-        }}
-      />
-    </Pressable>
+    <View style={{flex: 1.5, paddingLeft:5}}>
+      <Pressable onPress={() => navigation.navigate('Settings')}>
+        <Image
+          source={require('./settingsicon.png')}
+          style={{
+            resizeMode: "cover",
+            height: 30,
+            width: 30,
+          }}
+        />
+      </Pressable>
+    </View>
     );
   }
 }
