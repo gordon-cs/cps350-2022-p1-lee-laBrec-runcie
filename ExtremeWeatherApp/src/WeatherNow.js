@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Image,
   SafeAreaView,
-  TextInput,
   Pressable
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
@@ -39,14 +38,12 @@ export default class WeatherNow extends Component {
             {/* Refresh Button */}
             <View style={{flex: 1.5, }}>
               <Pressable onPress={() => this.forceUpdate()}>
-                <Image
-                  source={require('./refreshicon.png')}
-                  style={{
-                    resizeMode: "cover",
-                    height: 30,
-                    width: 30,
-                  }}
-                />
+                <Image source={require('./refreshicon.png')}
+                       style={{
+                          resizeMode: "cover",
+                          height: 30,
+                          width: 30,
+                       }}/>
               </Pressable>
             </View>
             <View style={{flex: 10,}}></View>
