@@ -7,7 +7,7 @@ class TempMarker extends React.Component {
       <Image
         style = {styles.image}
         source = {
-          this.props.pressed ? require('./XTRMWFR.png') : require('./Temp.png')
+          this.props.pressed ? require('./assets/XTRMWFR.png') : require('./assets/Temp.png')
         }
         resizeMode="contain"
       />

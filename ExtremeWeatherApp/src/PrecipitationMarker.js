@@ -7,7 +7,7 @@ class PrecipitationMarker extends React.Component {
       <Image
         style = {styles.image}
         source = {
-          this.props.pressed ? require('./XTRMWFR.png') : require('./cloud.png')
+          this.props.pressed ? require('./assets/XTRMWFR.png') : require('./assets/cloud.png')
         }
         resizeMode="contain"
       />

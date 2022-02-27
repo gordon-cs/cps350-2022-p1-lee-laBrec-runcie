@@ -29,7 +29,7 @@ export default class Settings extends Component {
         <View style = {{flex:1}}>
           <Pressable style ={{alignItems: "center",}} 
                       onPress={this.props.onParameterChange}>
-            <Image source={require('./savepreferences.png')}
+            <Image source={require('./assets/savepreferences.png')}
                   style={{resizeMode: "cover",}}/>
           </Pressable>
         </View>
@@ -49,7 +49,7 @@ class Title extends Component {
               flexDirection: 'column',
             }}>
         <View style={{ flex: 1.5}}>
-          <Image source = {require('./XTRMWFR.png')}/>
+          <Image source = {require('./assets/XTRMWFR.png')}/>
         </View>
         <View style={{ flex: 1.5 }}>
           <Text style = {{fontSize: 17, color: 'gray'}}>
@@ -57,7 +57,7 @@ class Title extends Component {
           </Text>
         </View>
         <View style={{ flex: 0.5 }}>
-          <Image source = {require("./line.png")}/>
+          <Image source = {require("./assets/line.png")}/>
         </View>
       </View>
     );
@@ -79,7 +79,7 @@ class TempSlider extends Component {
               alignItems: 'center',
               paddingTop: "10%",
             }}>
-        <Image source = {require('./1Preferences.png')}/>
+        <Image source = {require('./assets/1Preferences.png')}/>
         <View style = {{flex: 1, 
                     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
                     justifyContent: 'center', 
@@ -120,7 +120,7 @@ class WindSlider extends Component {
               alignItems: 'center',
               paddingTop: "10%",
             }}> 
-        <Image source = {require('./2Preferences.png')}/>
+        <Image source = {require('./assets/2Preferences.png')}/>
         <View style = {{flex: 1, 
                     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
                     justifyContent: 'center', 
@@ -160,7 +160,7 @@ class PrecipSlider extends Component {
               alignItems: 'center',
               paddingTop: "10%",
             }}> 
-        <Image source = {require('./3Preferences.png')}/>
+        <Image source = {require('./assets/3Preferences.png')}/>
         <View style = {{flex: 1, 
                     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
                     justifyContent: 'center', 
@@ -200,7 +200,7 @@ class UVSlider extends Component {
               alignItems: 'center',
               paddingTop: "10%",
             }}> 
-        <Image source = {require('./4Preferences.png')}/>
+        <Image source = {require('./assets/4Preferences.png')}/>
         <View style = {{flex: 1, 
                     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
                     justifyContent: 'center', 

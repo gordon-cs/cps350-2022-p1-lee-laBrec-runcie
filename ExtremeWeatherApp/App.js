@@ -11,7 +11,7 @@ import 'localstorage-polyfill';
 function HomeScreen( {navigation} ) {
   return (
     <View style={{flex:1,}}>
-        <ImageBackground source = {require('./src/gradientbackground.jpg')} 
+        <ImageBackground source = {require('./src/assets/gradientbackground.jpg')} 
           resizeMode="cover" 
           style = {{flex:1}}>
         <Weather />
@@ -24,7 +24,7 @@ function HomeScreen( {navigation} ) {
 function SettingsScreen( {navigation} ) {
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>      
-      <ImageBackground source = {require('./src/gradientbackground.jpg')} 
+      <ImageBackground source = {require('./src/assets/gradientbackground.jpg')} 
           resizeMode="cover" 
           style = {{flex:1}}>
           <SettingState />

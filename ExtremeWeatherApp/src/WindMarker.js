@@ -7,7 +7,7 @@ class WindMarker extends React.Component {
       <Image
         style = {styles.image}
         source = {
-          this.props.pressed ? require('./XTRMWFR.png') : require('./Wind.png')
+          this.props.pressed ? require('./assets/XTRMWFR.png') : require('./assets/Wind.png')
         }
         resizeMode="contain"
       />

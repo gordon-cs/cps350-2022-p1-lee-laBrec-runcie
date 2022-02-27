@@ -16,7 +16,7 @@ Press reload button after changing settings."
           settingText,
         )}>
           <Image
-            source={require('./helpicon.png')}
+            source={require('./assets/helpicon.png')}
             style={{
               resizeMode: "cover",
               height: 32,

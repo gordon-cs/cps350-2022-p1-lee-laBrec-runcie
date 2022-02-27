@@ -10,7 +10,7 @@ class SettingsButton extends Component {
     <View style={{flex: 1.5, paddingLeft:5}}>
       <Pressable onPress={() => navigation.navigate('Settings')}>
         <Image
-          source={require('./settingsicon.png')}
+          source={require('./assets/settingsicon.png')}
           style={{
             resizeMode: "cover",
             height: 30,

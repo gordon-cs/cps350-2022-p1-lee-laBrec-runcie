@@ -10,7 +10,7 @@ class BackButton extends Component {
     <View style={{flex: 0.3, paddingLeft:15}}>
       <Pressable onPress={() => navigation.navigate('Home')}>
         <Image
-          source={require('./settingsicon.png')}
+          source={require('./assets/settingsicon.png')}
           style={{
             resizeMode: "cover",
             height: 30,

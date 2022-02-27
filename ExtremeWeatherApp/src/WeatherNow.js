@@ -38,7 +38,7 @@ export default class WeatherNow extends Component {
             {/* Refresh Button */}
             <View style={{flex: 1.5, }}>
               <Pressable onPress={() => this.forceUpdate()}>
-                <Image source={require('./refreshicon.png')}
+                <Image source={require('./assets/refreshicon.png')}
                        style={{
                           resizeMode: "cover",
                           height: 30,
@@ -93,13 +93,13 @@ class Title extends Component {
               flexDirection: "column"
             }}>
         <View style = {{flex: 2}}>
-          <Image source = {require('./XTRMWFR.png')}/>
+          <Image source = {require('./assets/XTRMWFR.png')}/>
         </View>
         <View style = {{flex: 1.5}}>
-          <Image style source = {require("./itsDangerousOutThere.png")}/>
+          <Image style source = {require("./assets/itsDangerousOutThere.png")}/>
         </View>
         <View style = {{flex: 0.7}}>
-          <Image source = {require("./line.png")}/>
+          <Image source = {require("./assets/line.png")}/>
         </View>
         <View style = {{flex: 1.5, alignItems:'flex-start'}}>
           <Text style={{fontFamily: 'sans-serif-medium', fontSize: 25,}}>
@@ -175,7 +175,7 @@ class WeatherInfo extends Component {
           <View style = {styles.columnflex}>
             {/* Icon */}
             <Image style = {styles.image}
-                  source = {require('./Temp.png')}/>
+                  source = {require('./assets/Temp.png')}/>
             {/* Data */}
             <Text style = {styles.weatherInfoData}>
               {CurrTemp} °F
@@ -189,7 +189,7 @@ class WeatherInfo extends Component {
           <View style= {styles.columnflex}>
             {/* Icon */}
             <Image style = {styles.image}
-                  source={require('./Wind.png')}/>
+                  source={require('./assets/Wind.png')}/>
             <Text style = {styles.weatherInfoData}>
               {/* Data */}
               {Wind} MPH
@@ -203,7 +203,7 @@ class WeatherInfo extends Component {
           <View style = {styles.columnflex}>
             {/* Icon */}
             <Image style = {styles.image}
-                  source = {require('./cloud.png')}/>
+                  source = {require('./assets/cloud.png')}/>
             <Text style = {styles.weatherInfoData}>
               {/* Data */}
               {Precipitation}
@@ -217,7 +217,7 @@ class WeatherInfo extends Component {
           <View style = {styles.columnflex}>
             {/* Icon */}
             <Image style = {styles.image}
-                  source = {require('./sun.png')}/>
+                  source = {require('./assets/sun.png')}/>
             <Text style = {styles.weatherInfoData}>
               {/* Data */}
               {UVindex}

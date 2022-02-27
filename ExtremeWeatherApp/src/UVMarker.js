@@ -7,7 +7,7 @@ class UVMarker extends React.Component {
       <Image
         style = {styles.image}
         source = {
-          this.props.pressed ? require('./XTRMWFR.png') : require('./sun.png')
+          this.props.pressed ? require('./assets/XTRMWFR.png') : require('./assets/sun.png')
         }
         resizeMode="contain"
       />
