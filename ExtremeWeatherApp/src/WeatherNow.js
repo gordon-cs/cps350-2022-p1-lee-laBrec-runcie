@@ -6,16 +6,15 @@ import {
   Image,
   SafeAreaView,
   TextInput,
-  Button,
+  Pressable
 } from 'react-native';
 import RNSpeedometer from 'react-native-speedometer';
 import SettingsButton from './SettingsButton';
 import Recommendations from './Recommendations';
-import RefreshButton from './RefreshButton';
 
 export default class WeatherNow extends Component {
   update = () => {
-    // calling the forceUpdate() method
+    // Calling the forceUpdate() method
     this.forceUpdate();
   };
   render() {
@@ -32,7 +31,17 @@ export default class WeatherNow extends Component {
     return (
       <View style={{ flex: 1, flexDirection: "column"}}>
         <View style={{paddingTop: 15, flexDirection: 'row', justifyContent: "space-between"}}>
-          <RefreshButton />
+          {/* Refresh Button */}
+          <Pressable onPress={() => this.forceUpdate()}>
+            <Image
+              source={require('./RefreshIcon.png')}
+              style={{
+                resizeMode: "cover",
+                height: 48,
+                width: 48,
+              }}
+            />
+          </Pressable>
           <SettingsButton />
         </View>
         <View style={{paddingBottom: 75}}>
@@ -46,12 +55,6 @@ export default class WeatherNow extends Component {
                     weatherData={this.props.weatherData} />
         <View style={{padding: "2%"}}>
           <View style ={{paddingRight: 300,}}>
-            <Button 
-                style ={{alignItems: "center",}}
-                title="SAVE"
-                color={"pink"}
-                onPress={this.update}
-              />
           </View>
           <Recommendations dangerLevel={dangerValue} />
         </View>
@@ -134,18 +137,14 @@ class Dial extends Component {
               alignItems: "center",
             }}>
         <SafeAreaView>
-          <TextInput placeholder="Danger Level" textAlign='center'/>
-          <RNSpeedometer value={dangerValue} // Make dynamic 
+          <RNSpeedometer value={dangerValue}
             labels={dialLabels} 
-            innerCircleStyle={{backgroundColor: "transparent"}}/>
+            innerCircleStyle={{backgroundColor: "#6D6D6D", height: 75, width: 150}}
+            needleImage={require('./dial/arrow.png')}
+            imageWrapperStyle={{paddingTop: 0}}
+            labelNoteStyle={{backgroundColor: '#343434', padding: 10, borderRadius: 20}}/>
         </SafeAreaView>
         <View style ={{paddingRight: 300,}}>
-          <Button 
-              style ={{alignItems: "center",}}
-              title="SAVE"
-              color={"pink"}
-              onPress={this.update}
-            />
           </View>
       </View>
     );
