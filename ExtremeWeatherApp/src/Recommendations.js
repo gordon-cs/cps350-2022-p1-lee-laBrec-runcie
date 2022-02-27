@@ -4,13 +4,13 @@ import { View, Text, StyleSheet } from 'react-native';
 /* Recommendations class - no Props need to be provided*/
 export default class Recommendations extends Component {
   render() {
-    const rec1 = getRecommendation(this.props.dangerLevel);
-    const rec2 = getRecommendation(this.props.dangerLevel);
+    let rec1 = getRecommendation(this.props.dangerLevel);
+    let rec2 = getRecommendation(this.props.dangerLevel);
     // Avoid duplicates
     while (rec2 == rec1) {
        rec2 = getRecommendation(this.props.dangerLevel);
     }
-    const rec3 = getRecommendation(this.props.dangerLevel);
+    let rec3 = getRecommendation(this.props.dangerLevel);
     while ((rec3 == rec1) || (rec3 == rec2)) {
       rec3 = getRecommendation(this.props.dangerLevel);
    }
