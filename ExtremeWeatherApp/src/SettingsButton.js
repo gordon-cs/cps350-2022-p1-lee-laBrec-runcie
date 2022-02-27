@@ -9,11 +9,11 @@ class SettingsButton extends Component {
     return (
     <Pressable onPress={() => navigation.navigate('Settings')}>
       <Image
-        source={require('./SettingsIcon.png')}
+        source={require('./settingsicon.png')}
         style={{
           resizeMode: "cover",
-          height: 50,
-          width: 50,
+          height: 30,
+          width: 30,
         }}
       />
     </Pressable>

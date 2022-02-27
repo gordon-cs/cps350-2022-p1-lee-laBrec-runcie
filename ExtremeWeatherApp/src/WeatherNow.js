@@ -11,6 +11,7 @@ import {
 import RNSpeedometer from 'react-native-speedometer';
 import SettingsButton from './SettingsButton';
 import Recommendations from './Recommendations';
+import HelpButton from './HelpButton';
 
 export default class WeatherNow extends Component {
   update = () => {
@@ -27,37 +28,56 @@ export default class WeatherNow extends Component {
     } else {
       dangervalue[0] = JSON.parse(localStorage.getItem('dangerLevel'));
       dangerValue = dangervalue[0];
-    }
+    } ///////////////////////////////////////////////////////////////////
     return (
       <View style={{ flex: 1, flexDirection: "column"}}>
-        <View style={{paddingTop: 15, flexDirection: 'row', justifyContent: "space-between"}}>
-          {/* Refresh Button */}
-          <Pressable onPress={() => this.forceUpdate()}>
-            <Image
-              source={require('./RefreshIcon.png')}
-              style={{
-                resizeMode: "cover",
-                height: 48,
-                width: 48,
-              }}
-            />
-          </Pressable>
-          <SettingsButton />
-        </View>
-        <View style={{paddingBottom: 75}}>
-          <Title />
-        </View>
-        <CatchPhrase />
-        <SubTitle isLoading={this.props.isLoading}
-                  weatherData={this.props.weatherData} />
-        <Dial dangerLevel={this.props.dangerLevel}/>
-        <WeatherInfo isLoading={this.props.isLoading}
-                    weatherData={this.props.weatherData} />
-        <View style={{padding: "2%"}}>
-          <View style ={{paddingRight: 300,}}>
+
+        {/* 1 */}
+        <View style={{ flex: 0.3, flexDirection: "column"}}>
+          <View style={{flex: 1, paddingTop: 15, flexDirection: 'row',}}>
+            <HelpButton />
+            {/* Refresh Button */}
+            <View style={{flex: 1.5, }}>
+              <Pressable onPress={() => this.forceUpdate()}>
+                <Image
+                  source={require('./refreshicon.png')}
+                  style={{
+                    resizeMode: "cover",
+                    height: 30,
+                    width: 30,
+                  }}
+                />
+              </Pressable>
+            </View>
+            <View style={{flex: 10,}}></View>
+            <SettingsButton />
           </View>
-          <Recommendations dangerLevel={dangerValue} />
         </View>
+
+        {/* 2 */}
+        <View style={{ flex: 1.5,}}>
+          <Title isLoading={this.props.isLoading}
+                  weatherData={this.props.weatherData}/>
+        </View>
+
+        {/* 3 */}
+        <View style={{ flex: 1.5,}}>
+          <Dial dangerLevel={this.props.dangerLevel}/>
+        </View>
+
+        {/* 4 */}
+        <View style={{ flex: 0.7,}}></View>
+
+        {/* 5 */}
+        <View style={{ flex: 2, flexDirection: "column"}}>
+          <View style={{ flex: 1, flexDirection: "column",}}>
+            <WeatherInfo isLoading={this.props.isLoading}
+                      weatherData={this.props.weatherData} />
+            <View style={{ flex: 0.2,}}></View>
+            <Recommendations dangerLevel={dangerValue} />
+          </View>
+        </View>
+
       </View>
     );
   }
@@ -66,26 +86,30 @@ export default class WeatherNow extends Component {
 /* Title class - no Props needed*/
 class Title extends Component {
   render() {
+    let location;
+    if ( ! this.props.isLoading) {
+      location = this.props.weatherData.location.name;
+    }
     return (
       <View style = {{
               flex: 1,
               alignItems: "center",
+              flexDirection: "column"
             }}>
-        <Image source = {require('./XTRMWFR.png')}/>
-      </View>
-    );
-  }
-}
-
-/* CatchPhrase class - no Props needed*/
-class CatchPhrase extends Component {
-  render() {
-    return (
-        <View style = {{
-                flex: 1,
-                alignItems: "center",
-              }}>
-        <Image source = {require("./itsDangerousOutThere.png")}/>
+        <View style = {{flex: 2}}>
+          <Image source = {require('./XTRMWFR.png')}/>
+        </View>
+        <View style = {{flex: 1.5}}>
+          <Image style source = {require("./itsDangerousOutThere.png")}/>
+        </View>
+        <View style = {{flex: 2}}>
+          <Image source = {require("./line.png")}/>
+        </View>
+        <View style = {{flex: 1.5, paddingTop: -10,}}>
+          <Text style={{fontFamily: 'sans-serif-medium', fontSize: 25}}>
+            {location}, MA
+          </Text>
+        </View>
       </View>
     );
   }
@@ -106,11 +130,10 @@ class SubTitle extends Component {
     }
     return (
       <View style={{
-              flex: 1,
               alignItems: "center",
             }}>
-        <Text>
-          {location}
+        <Text style={{fontFamily: 'sans-serif-medium', fontSize: 25}}>
+          {location}, MA
         </Text>
       </View>
     );
@@ -133,7 +156,6 @@ class Dial extends Component {
     }
     return (
       <View style={{
-              flex: 6,
               alignItems: "center",
             }}>
         <SafeAreaView>
@@ -144,8 +166,6 @@ class Dial extends Component {
             imageWrapperStyle={{paddingTop: 0}}
             labelNoteStyle={{backgroundColor: '#343434', padding: 10, borderRadius: 20}}/>
         </SafeAreaView>
-        <View style ={{paddingRight: 300,}}>
-          </View>
       </View>
     );
   }
@@ -172,7 +192,7 @@ class WeatherInfo extends Component {
     }
     return (
       <View style = {{
-              flex:2,
+              flex:1,
             }}>
         <View style = {{
                 flex: 1,
@@ -185,11 +205,11 @@ class WeatherInfo extends Component {
             <Image style = {styles.image}
                   source = {require('./Temp.png')}/>
             {/* Data */}
-            <Text style = {{flex: 1,}}>
-              {CurrTemp} F
+            <Text style = {styles.weatherInfoData}>
+              {CurrTemp} °F
             </Text>
-            <Text style = {{flex: 1,}}>
-              Current Tmp
+            <Text style = {styles.weatherInfoText}>
+              Current Temp
             </Text>
           </View>
 
@@ -198,11 +218,11 @@ class WeatherInfo extends Component {
             {/* Icon */}
             <Image style = {styles.image}
                   source={require('./Wind.png')}/>
-            <Text style={{flex: 1,}}>
+            <Text style = {styles.weatherInfoData}>
               {/* Data */}
               {Wind} MPH
             </Text>
-            <Text style = {{flex: 1,}}>
+            <Text style = {styles.weatherInfoText}>
               Wind
             </Text>
           </View>
@@ -212,11 +232,11 @@ class WeatherInfo extends Component {
             {/* Icon */}
             <Image style = {styles.image}
                   source = {require('./cloud.png')}/>
-            <Text style = {{flex: 1,}}>
+            <Text style = {styles.weatherInfoData}>
               {/* Data */}
               {Precipitation}
             </Text>
-            <Text style = {{flex: 1,}}>
+            <Text style = {styles.weatherInfoText}>
               Precipitation
             </Text>
           </View>
@@ -226,11 +246,11 @@ class WeatherInfo extends Component {
             {/* Icon */}
             <Image style = {styles.image}
                   source = {require('./sun.png')}/>
-            <Text style = {{flex: 1,}}>
+            <Text style = {styles.weatherInfoData}>
               {/* Data */}
               {UVindex}
             </Text>
-            <Text style = {{flex: 1,}}>
+            <Text style = {styles.weatherInfoText}>
               UV Index
             </Text>
           </View>
@@ -251,6 +271,18 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: "center",
   },
+  weatherInfoData: {
+    flex: 1, 
+    fontSize: 20, 
+    fontFamily: "sans-serif-medium", 
+    color: "white"
+  },
+  weatherInfoText: {
+    flex: 1, 
+    fontSize: 12, 
+    fontFamily: "sans-serif-medium", 
+    color: "white"
+  }
 });
 
 const dialLabels = [
