@@ -6,8 +6,8 @@ export default class HelpButton extends Component {
   render() {
     const helpText = 
     "Danger score below based off of current weather conditions.";
-    const settingText = "Change location and proportion each \
-weather factor contributes to your score in the settings menu. \
+    const settingText = "Change proportion each weather factor \
+contributes to your score in the settings menu. \
 Press reload button after changing settings." 
     return (
       <View style={{flex: 1.5, paddingLeft:5}}>
