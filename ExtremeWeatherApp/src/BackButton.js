@@ -7,7 +7,7 @@ class BackButton extends Component {
   render() {
       const { navigation } = this.props;
     return (
-    <View style={{flex: 0.3, paddingLeft:15}}>
+    <View style={{flex: 1, paddingLeft:15}}>
       <Pressable onPress={() => navigation.navigate('Home')}>
         <Image
           source={require('./assets/exit.png')}
