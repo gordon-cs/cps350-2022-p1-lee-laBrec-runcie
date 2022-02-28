@@ -47,10 +47,8 @@ class Title extends Component {
         <View style={{ flex: 1.5}}>
           <Image source = {require('./assets/XTRMWFR.png')}/>
         </View>
-        <View style={{ flex: 1.5 }}>
-          <Text style = {{fontSize: 17, color: 'gray'}}>
-            Choose Your Preferences
-          </Text>
+        <View style={{ flex: 1 }}>
+          <Image source = {require("./assets/balance.png")}/>
         </View>
         <View style={{ flex: 0.5 }}>
           <Image source = {require("./assets/line.png")}/>
@@ -75,7 +73,7 @@ class TempSlider extends Component {
               alignItems: 'center',
               paddingTop: "10%",
             }}>
-        <Image source = {require('./assets/1Preferences.png')}/>
+        <Image source = {require('./assets/tempslider.png')}/>
         <View style = {{flex: 1, 
                     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
                     justifyContent: 'center', 
@@ -116,7 +114,7 @@ class WindSlider extends Component {
               alignItems: 'center',
               paddingTop: "10%",
             }}> 
-        <Image source = {require('./assets/2Preferences.png')}/>
+        <Image source = {require('./assets/windslider.png')}/>
         <View style = {{flex: 1, 
                     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
                     justifyContent: 'center', 
@@ -156,7 +154,7 @@ class PrecipSlider extends Component {
               alignItems: 'center',
               paddingTop: "10%",
             }}> 
-        <Image source = {require('./assets/3Preferences.png')}/>
+        <Image source = {require('./assets/precipslider.png')}/>
         <View style = {{flex: 1, 
                     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
                     justifyContent: 'center', 
@@ -196,7 +194,7 @@ class UVSlider extends Component {
               alignItems: 'center',
               paddingTop: "10%",
             }}> 
-        <Image source = {require('./assets/4Preferences.png')}/>
+        <Image source = {require('./assets/uvslider.png')}/>
         <View style = {{flex: 1, 
                     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
                     justifyContent: 'center', 
@@ -226,7 +224,7 @@ class SaveButton extends Component {
     return (
       <Pressable style ={{alignItems: "center",}} 
                   onPress={this.props.onParameterChange}>
-        <Image source={require('./assets/savepreferences.png')}
+        <Image source={require('./assets/savebutton.png')}
                   style={{resizeMode: "cover",}}/>
       </Pressable>
     );
