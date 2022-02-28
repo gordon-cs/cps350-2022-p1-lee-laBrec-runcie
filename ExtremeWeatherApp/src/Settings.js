@@ -47,7 +47,7 @@ class Title extends Component {
         <View style={{ flex: 1.5}}>
           <Image source = {require('./assets/XTRMWFR.png')}/>
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 0.8 }}>
           <Image source = {require("./assets/balance.png")}/>
         </View>
         <View style={{ flex: 0.5 }}>
@@ -60,11 +60,16 @@ class Title extends Component {
 
 class TempSlider extends Component {
   render() {
+    // Declare and intizliatize - must change after this if not first render.
     let tempPref = [];
     tempPref[0] = 0.5;
+
+    // Get value of temperature 
     let tempPref1 = JSON.parse(localStorage.getItem('temprua'));
-    if (tempPref[0] !== 0.5 || tempPref1 !== null ) {
-      tempPref = JSON.parse(localStorage.getItem('temprua'));
+
+    // As long as its not null, should be fine to set the temp pref
+    if (tempPref1 !== null) {
+      tempPref[0] = JSON.parse(localStorage.getItem('temprua'));
     }
     let length = 300;
     return (
@@ -93,7 +98,6 @@ class TempSlider extends Component {
             onValuesChangeFinish={this.props.updateTempPref}
             smoothSnapped/>
           </View>
-        
       </View>
     );
   }
@@ -104,8 +108,8 @@ class WindSlider extends Component {
     let Pref = [];
     Pref[0] = 0.5;
     let Pref1 = JSON.parse(localStorage.getItem('wind'));
-    if (Pref[0] !== 0.5 || Pref1 !== null) {
-      Pref = JSON.parse(localStorage.getItem('wind'));
+    if (Pref1 !== null) {
+      Pref[0] = JSON.parse(localStorage.getItem('wind'));
     }
     let length = 300;
     return (
@@ -144,8 +148,8 @@ class PrecipSlider extends Component {
     let Pref = [];
     Pref[0] = 0.5;
     let Pref1 = JSON.parse(localStorage.getItem('precipitation'));
-    if (Pref[0] !== 0.5 || Pref1 !== null) {
-      Pref = JSON.parse(localStorage.getItem('precipitation'));
+    if (Pref1 !== null) {
+      Pref[0] = JSON.parse(localStorage.getItem('precipitation'));
     }
     let length = 300;
     return (
@@ -184,8 +188,8 @@ class UVSlider extends Component {
     let Pref = [];
     Pref[0] = 0.5;
     let Pref1 = JSON.parse(localStorage.getItem('uvindex'));
-    if (Pref[0] !== 0.5 || Pref1 !== null) {
-      Pref = JSON.parse(localStorage.getItem('uvindex'));
+    if (Pref1 !== null) {
+      Pref[0] = JSON.parse(localStorage.getItem('uvindex'));
     }
     let length = 300;
     return (

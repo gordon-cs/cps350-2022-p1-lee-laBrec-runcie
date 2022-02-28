@@ -41,17 +41,18 @@ export default class Weather extends Component {
     const precipScore = getPrecipScore(Precip);
 
     // Calculate percentages of total score for each factor
-    const factorSum = prefTemp[0] + prefWind[0] 
-                    + prefUV[0] + prefPrecip[0];
-    const tempPerc = prefTemp[0]/factorSum;
-    const windPerc = prefWind[0]/factorSum;
-    const uvPerc = prefUV[0]/factorSum;
-    const precipPerc = prefPrecip[0]/factorSum;
+    const factorSum = prefTemp + prefWind 
+                    + prefUV + prefPrecip;
+    const tempPerc = prefTemp/factorSum;
+    const windPerc = prefWind/factorSum;
+    const uvPerc = prefUV/factorSum;
+    const precipPerc = prefPrecip/factorSum;
 
     const dangerValue = ((tempScore * tempPerc) 
                         + (windScore * windPerc)
                         + (uvScore * uvPerc)
                         + (precipScore * precipPerc));
+
     localStorage.setItem('dangerLevel', JSON.stringify(dangerValue))
   }
 
