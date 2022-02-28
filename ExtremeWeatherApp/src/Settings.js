@@ -23,9 +23,9 @@ export default class Settings extends Component {
         <BackButton />
         <Title />
         <TempSlider updateTempPref={this.props.updateTempPref}/> 
-        <WindSlider  updateWindPref={this.props.updateWindPref}/> 
+        {/* <WindSlider  updateWindPref={this.props.updateWindPref}/> 
         <PrecipSlider updatePrecipPref={this.props.updatePrecipPref}/>
-        <UVSlider updateUVPref={this.props.updateUVPref}/> 
+        <UVSlider updateUVPref={this.props.updateUVPref}/>  */}
         <View style = {{flex:1}}>
           <SaveButton onParameterChange={this.props.onParameterChange} />
         </View>
@@ -47,7 +47,7 @@ class Title extends Component {
         <View style={{ flex: 1.5}}>
           <Image source = {require('./assets/XTRMWFR.png')}/>
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 0.8 }}>
           <Image source = {require("./assets/balance.png")}/>
         </View>
         <View style={{ flex: 0.5 }}>
@@ -60,11 +60,14 @@ class Title extends Component {
 
 class TempSlider extends Component {
   render() {
+    console.log("hllo1111");
     let tempPref = [];
     tempPref[0] = 0.5;
     let tempPref1 = JSON.parse(localStorage.getItem('temprua'));
+    console.log(tempPref1);
     if (tempPref[0] !== 0.5 || tempPref1 !== null ) {
-      tempPref = JSON.parse(localStorage.getItem('temprua'));
+      tempPref[0] = JSON.parse(localStorage.getItem('temprua'));
+      console.log("hllo");
     }
     let length = 300;
     return (
@@ -93,7 +96,6 @@ class TempSlider extends Component {
             onValuesChangeFinish={this.props.updateTempPref}
             smoothSnapped/>
           </View>
-        
       </View>
     );
   }
