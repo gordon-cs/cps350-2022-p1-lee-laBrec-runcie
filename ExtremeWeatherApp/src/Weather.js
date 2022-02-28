@@ -48,11 +48,12 @@ export default class Weather extends Component {
     const uvPerc = prefUV/factorSum;
     const precipPerc = prefPrecip/factorSum;
 
-    const dangerValue = ((tempScore * tempPerc) 
+    let dangerValue = ((tempScore * tempPerc) 
                         + (windScore * windPerc)
                         + (uvScore * uvPerc)
                         + (precipScore * precipPerc));
-
+    dangerValue = dangerValue * 2;
+    console.log (dangerValue);
     localStorage.setItem('dangerLevel', JSON.stringify(dangerValue))
   }
 
@@ -66,20 +67,13 @@ export default class Weather extends Component {
 
   async getWeatherApi() {
     try {
-        let locationArray = [];
         let location = "01984";
-        // if (JSON.parse(localStorage.getItem("location")) === null) {
-        //     // Default Wenham, MA
-        //     localStorage.setItem("location", "01984");
-        //     locationArray[0] = JSON.parse(localStorage.getItem("location"));
-        //     location = locationArray[0];   
-        // } else {
-        //     locationArray[0] = JSON.parse(localStorage.getItem("location"));
-        //     location = locationArray[0];
-        //     }
         let query = "http://api.weatherapi.com/v1/current.json?key=a23ef8a8a6194ac4a6d194322220102&q=" 
                     + location + "&aqi=no";
-                    
+        let query1 = "http://api.weatherapi.com/v1/current.json?key=a23ef8a8a6194ac4a6d194322220102&q=Juneau&aqi=no"
+        let query2 ="http://api.weatherapi.com/v1/current.json?key=a23ef8a8a6194ac4a6d194322220102&q=Dubai&aqi=no"
+        let query3 = "http://api.weatherapi.com/v1/current.json?key=a23ef8a8a6194ac4a6d194322220102&q=Kampala&aqi=no"
+        let query4 = "http://api.weatherapi.com/v1/current.json?key=a23ef8a8a6194ac4a6d194322220102&q=Nagasaki&aqi=no"
         let response = await fetch (query);
         let responseJson = await response.json();
         this.setState({
