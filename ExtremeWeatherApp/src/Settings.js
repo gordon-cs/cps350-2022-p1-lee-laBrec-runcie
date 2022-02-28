@@ -23,8 +23,8 @@ export default class Settings extends Component {
         <BackButton />
         <Title />
         <TempSlider updateTempPref={this.props.updateTempPref}/> 
-        {/* <WindSlider  updateWindPref={this.props.updateWindPref}/> 
-        <PrecipSlider updatePrecipPref={this.props.updatePrecipPref}/>
+        <WindSlider  updateWindPref={this.props.updateWindPref}/> 
+        {/* <PrecipSlider updatePrecipPref={this.props.updatePrecipPref}/>
         <UVSlider updateUVPref={this.props.updateUVPref}/>  */}
         <View style = {{flex:1}}>
           <SaveButton onParameterChange={this.props.onParameterChange} />
@@ -66,11 +66,9 @@ class TempSlider extends Component {
 
     // Get value of temperature 
     let tempPref1 = JSON.parse(localStorage.getItem('temprua'));
-    console.log(tempPref1);
 
     // As long as its not null, should be fine to set the temp pref
     if (tempPref1 !== null) {
-      console.log("YES");
       tempPref[0] = JSON.parse(localStorage.getItem('temprua'));
     }
     let length = 300;
@@ -109,9 +107,13 @@ class WindSlider extends Component {
   render() {
     let Pref = [];
     Pref[0] = 0.5;
+
+    // Get value of temperature 
     let Pref1 = JSON.parse(localStorage.getItem('wind'));
-    if (Pref[0] !== 0.5 || Pref1 !== null) {
-      Pref = JSON.parse(localStorage.getItem('wind'));
+
+    // As long as its not null, should be fine to set the temp pref
+    if (Pref1 !== null) {
+      Pref[0] = JSON.parse(localStorage.getItem('wind'));
     }
     let length = 300;
     return (

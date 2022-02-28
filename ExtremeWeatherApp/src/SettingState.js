@@ -74,14 +74,23 @@ export default class SettingState extends Weather {
     //        Must get from local storage.
     //  When only templvl is undefined. local storage will never be null again.
     } else if (tempLvl === undefined && temperatureTEMP !== null) {
-      temperatureTEMP = JSON.parse(localStorage.getItem('temprua'));
+        temperatureTEMP = JSON.parse(localStorage.getItem('temprua'));
         localStorage.setItem('temprua', JSON.stringify(temperatureTEMP));
     } else {
       localStorage.setItem('temprua', tempLvl);
     }
     
+    let WindTEMP = JSON.parse(localStorage.getItem('wind'));
+    if (windLvl === undefined && WindTEMP === null) {
+      localStorage.setItem('wind', JSON.stringify(0.5));
+      console.log(JSON.parse(localStorage.getItem('wind')));
+    } else if (windLvl === undefined && WindTEMP !== null) {
+      WindTEMP = JSON.parse(localStorage.getItem('wind'));
+      localStorage.setItem('wind', JSON.stringify(WindTEMP));
+    } else {
+      localStorage.setItem('wind', windLvl);
+    }
 
-    localStorage.setItem('wind', JSON.stringify(windLvl));
     localStorage.setItem('precipitation', JSON.stringify(precipLvl));
     localStorage.setItem('uvindex', JSON.stringify(uvLvl));
   }
