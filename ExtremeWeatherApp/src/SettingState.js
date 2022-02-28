@@ -54,11 +54,7 @@ export default class SettingState extends Weather {
     // IF values change then proceed normally. - Templvl is able to function.
     // localStorage.setItem('temprua', JSON.stringify(tempLvl));
 
-    //    If they DO NOT change - this means they are not getting an input value.
-    //     Before and After system?
-    //        Set previous value to before, set new value (if changed) to after
-    //          If they are equal - merely setItem of official
-    //          If they are not equal - 
+    //    If they DO NOT change - this means they are not getting an input value. 
     //    1st case is that they do not have have a value at all - in this case make 0.5
     //          If local storage is emtpy - set it to 0.5.
     //  When BOTH templvl and temperatureTEMP are not intialized, intizialize it.
