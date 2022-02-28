@@ -13,6 +13,8 @@ import TempMarker from './TempMarker';
 import UVMarker from './UVMarker';
 import WindMarker from './WindMarker';
 import BackButton from './BackButton';
+import HelpButtonPref from './HelpButtonPref';
+
 
 
 
@@ -20,7 +22,11 @@ export default class Settings extends Component {
   render() {
     return (
       <View style={{ flex: 1, flexDirection: "column",}}>
-        <BackButton />
+        <View style = {{flex:0.4, flexDirection:"row"}}>
+          <BackButton />
+          <View style = {{flex: 7,}}></View>
+          <HelpButtonPref />
+        </View>
         <Title />
         <TempSlider updateTempPref={this.props.updateTempPref}/> 
         <WindSlider  updateWindPref={this.props.updateWindPref}/> 

@@ -5,10 +5,11 @@ import { Image, Pressable, View, Alert } from 'react-native';
 export default class HelpButton extends Component {
   render() {
     const helpText = 
-    "Danger score below based off of current weather conditions.";
-    const settingText = "Change location and proportion each \
-weather factor contributes to your score in the settings menu. \
-Press reload button after changing settings." 
+    "Welcome to XTRM WFR!";
+    const settingText = ("Start by clicking on the settings icon in the top right!\n"+
+    "After changing your preferences and saving, click the refresh button right next"+
+    " to this icon.\nThis will active the danger dial with a personalized score carefully "+
+    "calculated according to the current weather and your preferences.")
     return (
       <View style={{flex: 1.5, paddingLeft:5}}>
         <Pressable onPress={() => Alert.alert(
