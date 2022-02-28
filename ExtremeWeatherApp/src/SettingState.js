@@ -19,7 +19,6 @@ export default class SettingState extends Weather {
   }
 
   updateTempPref(newValue) {
-    console.log("hello0");
     this.setState ({
       tempPref: newValue,
     });
@@ -64,37 +63,24 @@ export default class SettingState extends Weather {
     //          If they are not equal - 
     //    1st case is that they do not have have a value at all - in this case make 0.5
     //          If local storage is emtpy - set it to 0.5.
-    //  When BOTH templvl and tempbruh are not intialized, intizialize it.
-    let tempbruh = JSON.parse(localStorage.getItem('temprua'));
-    console.log("start");
-    console.log("tempbruh " + tempbruh);
-    console.log("templvl "+ tempLvl);
-    if (tempLvl === undefined && tempbruh === null) {
+    //  When BOTH templvl and temperatureTEMP are not intialized, intizialize it.
+    let temperatureTEMP = JSON.parse(localStorage.getItem('temprua'));
+    if (tempLvl === undefined && temperatureTEMP === null) {
       localStorage.setItem('temprua', JSON.stringify(0.5));
       console.log(JSON.parse(localStorage.getItem('temprua')));
-    } else if (tempLvl ==='undefined') {
 
-    }
     //    if tempLvl is NULL
     //    2nd case: If they do have a value, just not changed,
     //        Must get from local storage.
     //  When only templvl is undefined. local storage will never be null again.
+    } else if (tempLvl === undefined && temperatureTEMP !== null) {
+      temperatureTEMP = JSON.parse(localStorage.getItem('temprua'));
+        localStorage.setItem('temprua', JSON.stringify(temperatureTEMP));
+    } else {
+      localStorage.setItem('temprua', tempLvl);
+    }
+    
 
-
-    // // Get current value of temp
-    // let tempbruh = JSON.parse(localStorage.getItem('temprua'));
-
-    // // If null, set default value 0.5 - will only happen once.
-    // if (tempbruh === null) {
-    //   localStorage.setItem('temprua', JSON.stringify(0.5));
-    //   tempbruh = JSON.parse(localStorage.getItem('temprua'));
-    // }
-
-    // // If values are the same
-    // if ( tempbruh[0] == this.state.tempLvl ) {
-    //   localStorage.setItem('temprua', JSON.stringify(tempLvl));
-    // }
-    // localStorage.setItem('temprua', JSON.stringify(tempLvl));
     localStorage.setItem('wind', JSON.stringify(windLvl));
     localStorage.setItem('precipitation', JSON.stringify(precipLvl));
     localStorage.setItem('uvindex', JSON.stringify(uvLvl));
@@ -107,7 +93,6 @@ export default class SettingState extends Weather {
                 updatePrecipPref={this.updatePrecipPref}
                 updateUVPref={this.updateUVPref}
                 onParameterChange={this.handleParameterChange}
-                isLoading={this.state.isLoading}
                 />
     );
   }

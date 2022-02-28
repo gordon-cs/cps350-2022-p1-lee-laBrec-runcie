@@ -60,14 +60,18 @@ class Title extends Component {
 
 class TempSlider extends Component {
   render() {
-    console.log("hllo1111");
+    // Declare and intizliatize - must change after this if not first render.
     let tempPref = [];
     tempPref[0] = 0.5;
+
+    // Get value of temperature 
     let tempPref1 = JSON.parse(localStorage.getItem('temprua'));
     console.log(tempPref1);
-    if (tempPref[0] !== 0.5 || tempPref1 !== null ) {
+
+    // As long as its not null, should be fine to set the temp pref
+    if (tempPref1 !== null) {
+      console.log("YES");
       tempPref[0] = JSON.parse(localStorage.getItem('temprua'));
-      console.log("hllo");
     }
     let length = 300;
     return (
