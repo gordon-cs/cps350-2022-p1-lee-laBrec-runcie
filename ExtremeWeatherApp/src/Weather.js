@@ -27,32 +27,31 @@ export default class Weather extends Component {
   calculateValue(Temp, Wind, Precip, UV) {
     this.forceUpdate();
     const prefTemp = JSON.parse(localStorage.getItem('temprua'));
-    // const prefWind = JSON.parse(localStorage.getItem('wind'));
-    // const prefUV = JSON.parse(localStorage.getItem('uvindex'));
-    // const prefPrecip = JSON.parse(localStorage.getItem('precipitation'));
+    const prefWind = JSON.parse(localStorage.getItem('wind'));
+    const prefUV = JSON.parse(localStorage.getItem('uvindex'));
+    const prefPrecip = JSON.parse(localStorage.getItem('precipitation'));
 
     // Calculate scores for each factor
-    // const tempScore = 75 - (2.870265 * Temp) + ((0.0280494 * Temp * Temp));
-    // const windScore = 1.526 + (1.579 * Wind) + (-0.005 * Wind * Wind);
-    // const uvScore = 12.5 * UV;
-    // if (uvScore > 100) {
-    //   uvScore = 100;
-    // }
-    // const precipScore = getPrecipScore(Precip);
+    const tempScore = 75 - (2.870265 * Temp) + ((0.0280494 * Temp * Temp));
+    const windScore = 1.526 + (1.579 * Wind) + (-0.005 * Wind * Wind);
+    const uvScore = 12.5 * UV;
+    if (uvScore > 100) {
+      uvScore = 100;
+    }
+    const precipScore = getPrecipScore(Precip);
 
-    // // Calculate percentages of total score for each factor
-    // const factorSum = prefTemp[0] + prefWind[0] 
-    //                 + prefUV[0] + prefPrecip[0];
-    // const tempPerc = prefTemp[0]/factorSum;
-    // const windPerc = prefWind[0]/factorSum;
-    // const uvPerc = prefUV[0]/factorSum;
-    // const precipPerc = prefPrecip[0]/factorSum;
+    // Calculate percentages of total score for each factor
+    const factorSum = prefTemp[0] + prefWind[0] 
+                    + prefUV[0] + prefPrecip[0];
+    const tempPerc = prefTemp[0]/factorSum;
+    const windPerc = prefWind[0]/factorSum;
+    const uvPerc = prefUV[0]/factorSum;
+    const precipPerc = prefPrecip[0]/factorSum;
 
-    // const dangerValue = ((tempScore * tempPerc) 
-    //                     + (windScore * windPerc)
-    //                     + (uvScore * uvPerc)
-    //                     + (precipScore * precipPerc));
-    dangerValue = 10;
+    const dangerValue = ((tempScore * tempPerc) 
+                        + (windScore * windPerc)
+                        + (uvScore * uvPerc)
+                        + (precipScore * precipPerc));
     localStorage.setItem('dangerLevel', JSON.stringify(dangerValue))
   }
 

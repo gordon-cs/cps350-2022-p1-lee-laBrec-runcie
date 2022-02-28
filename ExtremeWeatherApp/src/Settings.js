@@ -25,7 +25,7 @@ export default class Settings extends Component {
         <TempSlider updateTempPref={this.props.updateTempPref}/> 
         <WindSlider  updateWindPref={this.props.updateWindPref}/> 
         <PrecipSlider updatePrecipPref={this.props.updatePrecipPref}/>
-        {/* <UVSlider updateUVPref={this.props.updateUVPref}/>  */}
+        <UVSlider updateUVPref={this.props.updateUVPref}/> 
         <View style = {{flex:1}}>
           <SaveButton onParameterChange={this.props.onParameterChange} />
         </View>
@@ -188,8 +188,8 @@ class UVSlider extends Component {
     let Pref = [];
     Pref[0] = 0.5;
     let Pref1 = JSON.parse(localStorage.getItem('uvindex'));
-    if (Pref[0] !== 0.5 || Pref1 !== null) {
-      Pref = JSON.parse(localStorage.getItem('uvindex'));
+    if (Pref1 !== null) {
+      Pref[0] = JSON.parse(localStorage.getItem('uvindex'));
     }
     let length = 300;
     return (

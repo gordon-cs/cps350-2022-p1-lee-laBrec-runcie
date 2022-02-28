@@ -99,7 +99,15 @@ export default class SettingState extends Weather {
       localStorage.setItem('precipitation', precipLvl);
     }
 
-    localStorage.setItem('uvindex', JSON.stringify(uvLvl));
+    let UVTEMP = JSON.parse(localStorage.getItem('uvindex'));
+    if (uvLvl === undefined && UVTEMP === null) {
+      localStorage.setItem('uvindex', JSON.stringify(0.5));
+    } else if (uvLvl === undefined && UVTEMP !== null) {
+      UVTEMP = JSON.parse(localStorage.getItem('uvindex'));
+      localStorage.setItem('uvindex', JSON.stringify(UVTEMP));
+    } else {
+      localStorage.setItem('uvindex', uvLvl);
+    }
   }
 
   render() {
