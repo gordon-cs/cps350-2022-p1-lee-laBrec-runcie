@@ -10,7 +10,6 @@ export default class SettingState extends Weather {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true,
     }
     this.updateTempPref = this.updateTempPref.bind(this);
     this.updateWindPref = this.updateWindPref.bind(this);
@@ -22,28 +21,25 @@ export default class SettingState extends Weather {
   updateTempPref(newValue) {
     this.setState ({
       tempPref: newValue,
-      isLoading: true,
     });
   }
 
   updateWindPref(newValue) {
     this.setState ({
       windPref: newValue,
-      isLoading: true,
+
     });
   }
 
   updatePrecipPref(newValue) {
     this.setState ({
       precipPref: newValue,
-      isLoading: true,
     });
   }
 
   updateUVPref(newValue) {
     this.setState ({
       UVPref: newValue,
-      isLoading: true,
     });
   }
 
@@ -54,9 +50,6 @@ export default class SettingState extends Weather {
   handleParameterChange() {
     this.setParameters(this.state.tempPref, this.state.windPref, this.state.precipPref, this.state.UVPref);
     super.parameterChange();
-    this.setState ({
-      isLoading: false,
-    });
   }
 
   setParameters(tempLvl, windLvl, precipLvl, uvLvl) {

@@ -81,8 +81,7 @@ class TempSlider extends Component {
                     justifyContent: 'center', 
                     alignItems: 'center',
                     flexDirection: "column",} }>
-          <MultiSlider values={[0]}
-            enableLabel
+          <MultiSlider
             sliderLength={length}
             step = {3}
             values = {tempPref}
@@ -93,7 +92,8 @@ class TempSlider extends Component {
             showSteps
             showStepMarkers
             showStepLabels
-            onValuesChangeFinish={this.props.updateTempPref}/>
+            onValuesChangeFinish={this.props.updateTempPref}
+            smoothSnapped/>
           </View>
         
       </View>
@@ -122,8 +122,7 @@ class WindSlider extends Component {
                     justifyContent: 'center', 
                     alignItems: 'center',
                     flexDirection: "column",}}>
-          <MultiSlider values={[0]}
-            enableLabel
+          <MultiSlider
             sliderLength={length}
             step = {3}
             values = {Pref}
@@ -134,7 +133,8 @@ class WindSlider extends Component {
             showSteps
             showStepMarkers
             showStepLabels
-            onValuesChangeFinish={this.props.updateWindPref}/>
+            onValuesChangeFinish={this.props.updateWindPref}
+            smoothSnapped/>
         </View>
       </View>
     );
@@ -162,8 +162,7 @@ class PrecipSlider extends Component {
                     justifyContent: 'center', 
                     alignItems: 'center',
                     flexDirection: "column",}}>
-          <MultiSlider values={[0]}
-            enableLabel
+          <MultiSlider
             sliderLength={length}
             step = {3}
             values = {Pref}
@@ -174,7 +173,8 @@ class PrecipSlider extends Component {
             showSteps
             showStepMarkers
             showStepLabels
-            onValuesChangeFinish={this.props.updatePrecipPref}/>
+            onValuesChangeFinish={this.props.updatePrecipPref}
+            smoothSnapped/>
         </View>
       </View>
     );
@@ -202,8 +202,7 @@ class UVSlider extends Component {
                     justifyContent: 'center', 
                     alignItems: 'center',
                     flexDirection: "column",}}>
-          <MultiSlider values={[0]}
-            enableLabel
+          <MultiSlider
             sliderLength={length}
             step = {3}
             values = {Pref}
@@ -214,7 +213,8 @@ class UVSlider extends Component {
             showSteps
             showStepMarkers
             showStepLabels
-            onValuesChangeFinish={this.props.updateUVPref}/>
+            onValuesChangeFinish={this.props.updateUVPref}
+            smoothSnapped/>
         </View>
       </View>
     );
