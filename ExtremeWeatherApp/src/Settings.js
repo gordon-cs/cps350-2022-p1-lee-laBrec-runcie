@@ -27,11 +27,7 @@ export default class Settings extends Component {
         <PrecipSlider updatePrecipPref={this.props.updatePrecipPref}/>
         <UVSlider updateUVPref={this.props.updateUVPref}/> 
         <View style = {{flex:1}}>
-          <Pressable style ={{alignItems: "center",}} 
-                      onPress={this.props.onParameterChange}>
-            <Image source={require('./assets/savepreferences.png')}
-                  style={{resizeMode: "cover",}}/>
-          </Pressable>
+          <SaveButton onParameterChange={this.props.onParameterChange} />
         </View>
         <View style={{ flex: 1.5 }}></View>
       </View>
@@ -69,7 +65,7 @@ class TempSlider extends Component {
     let tempPref = [];
     tempPref[0] = 0.5;
     let tempPref1 = JSON.parse(localStorage.getItem('temprua'));
-    if (tempPref[0] !== 0.5 || tempPref1 !== null) {
+    if (tempPref[0] !== 0.5 || tempPref1 !== null ) {
       tempPref = JSON.parse(localStorage.getItem('temprua'));
     }
     let length = 300;
@@ -85,8 +81,7 @@ class TempSlider extends Component {
                     justifyContent: 'center', 
                     alignItems: 'center',
                     flexDirection: "column",} }>
-          <MultiSlider values={[0]}
-            enableLabel
+          <MultiSlider
             sliderLength={length}
             step = {3}
             values = {tempPref}
@@ -97,7 +92,8 @@ class TempSlider extends Component {
             showSteps
             showStepMarkers
             showStepLabels
-            onValuesChangeFinish={this.props.updateTempPref}/>
+            onValuesChangeFinish={this.props.updateTempPref}
+            smoothSnapped/>
           </View>
         
       </View>
@@ -126,8 +122,7 @@ class WindSlider extends Component {
                     justifyContent: 'center', 
                     alignItems: 'center',
                     flexDirection: "column",}}>
-          <MultiSlider values={[0]}
-            enableLabel
+          <MultiSlider
             sliderLength={length}
             step = {3}
             values = {Pref}
@@ -138,7 +133,8 @@ class WindSlider extends Component {
             showSteps
             showStepMarkers
             showStepLabels
-            onValuesChangeFinish={this.props.updateWindPref}/>
+            onValuesChangeFinish={this.props.updateWindPref}
+            smoothSnapped/>
         </View>
       </View>
     );
@@ -166,8 +162,7 @@ class PrecipSlider extends Component {
                     justifyContent: 'center', 
                     alignItems: 'center',
                     flexDirection: "column",}}>
-          <MultiSlider values={[0]}
-            enableLabel
+          <MultiSlider
             sliderLength={length}
             step = {3}
             values = {Pref}
@@ -178,7 +173,8 @@ class PrecipSlider extends Component {
             showSteps
             showStepMarkers
             showStepLabels
-            onValuesChangeFinish={this.props.updatePrecipPref}/>
+            onValuesChangeFinish={this.props.updatePrecipPref}
+            smoothSnapped/>
         </View>
       </View>
     );
@@ -206,8 +202,7 @@ class UVSlider extends Component {
                     justifyContent: 'center', 
                     alignItems: 'center',
                     flexDirection: "column",}}>
-          <MultiSlider values={[0]}
-            enableLabel
+          <MultiSlider
             sliderLength={length}
             step = {3}
             values = {Pref}
@@ -218,9 +213,22 @@ class UVSlider extends Component {
             showSteps
             showStepMarkers
             showStepLabels
-            onValuesChangeFinish={this.props.updateUVPref}/>
+            onValuesChangeFinish={this.props.updateUVPref}
+            smoothSnapped/>
         </View>
       </View>
+    );
+  }
+}
+
+class SaveButton extends Component {
+  render () {
+    return (
+      <Pressable style ={{alignItems: "center",}} 
+                  onPress={this.props.onParameterChange}>
+        <Image source={require('./assets/savepreferences.png')}
+                  style={{resizeMode: "cover",}}/>
+      </Pressable>
     );
   }
 }

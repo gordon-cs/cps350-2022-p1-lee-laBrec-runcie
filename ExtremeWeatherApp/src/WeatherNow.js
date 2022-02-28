@@ -21,13 +21,13 @@ export default class WeatherNow extends Component {
     let dangervalue = [];
     let dangerValue;
     if (JSON.parse(localStorage.getItem('dangerLevel')) === null) {
-      localStorage.setItem('dangerLevel', JSON.stringify(10))
+      localStorage.setItem('dangerLevel', JSON.stringify(0))
       dangervalue[0] = JSON.parse(localStorage.getItem('dangerLevel'));
       dangerValue = dangervalue[0];
     } else {
       dangervalue[0] = JSON.parse(localStorage.getItem('dangerLevel'));
       dangerValue = dangervalue[0];
-    } ///////////////////////////////////////////////////////////////////
+    }
     return (
       <View style={{ flex: 1, flexDirection: "column"}}>
 
