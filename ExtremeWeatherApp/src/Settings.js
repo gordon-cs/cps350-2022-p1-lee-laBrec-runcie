@@ -6,6 +6,7 @@ import {
   Image,
   Button,
   Pressable,
+  Alert,
 } from 'react-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import PrecipitationMarker from './PrecipitationMarker';
@@ -233,7 +234,10 @@ class SaveButton extends Component {
   render () {
     return (
       <Pressable style ={{alignItems: "center",}} 
-                  onPress={this.props.onParameterChange}>
+                  onPress={this.props.onParameterChange}
+                  onPressOut={() => Alert.alert(
+                    "Saved!",
+                  )}>
         <Image source={require('./assets/savebutton.png')}
                   style={{resizeMode: "cover",}}/>
       </Pressable>
