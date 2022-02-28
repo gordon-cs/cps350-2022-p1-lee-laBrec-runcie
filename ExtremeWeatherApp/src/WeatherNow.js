@@ -114,7 +114,7 @@ class Title extends Component {
 
 class Dial extends Component {
   update = () => {
-    // calling the forceUpdate() method
+    // Calling the forceUpdate() method
     this.forceUpdate();
   };
   render() {

@@ -65,7 +65,9 @@ export default class Weather extends Component {
 
   async getWeatherApi() {
     try {
-        let locationArray = [];
+        // Attempt to implement changing location
+        // Same problem as memory with sliders
+        // let locationArray = [];
         let location = "01984";
         // if (JSON.parse(localStorage.getItem("location")) === null) {
         //     // Default Wenham, MA
