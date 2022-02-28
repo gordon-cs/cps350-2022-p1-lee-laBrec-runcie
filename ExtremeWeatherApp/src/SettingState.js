@@ -1,6 +1,4 @@
 import React, { Component,} from 'react';
-import ReactDOM from 'react-dom'
-
 
 import Weather from './Weather';
 import Settings from './Settings';
@@ -117,7 +115,6 @@ export default class SettingState extends Weather {
                 updatePrecipPref={this.updatePrecipPref}
                 updateUVPref={this.updateUVPref}
                 onParameterChange={this.handleParameterChange}
-                />
     );
   }
 }
