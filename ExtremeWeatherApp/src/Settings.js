@@ -23,7 +23,7 @@ export default class Settings extends Component {
   render() {
     return (
       <View style={{ flex: 1, flexDirection: "column",}}>
-        <View style = {{flex:0.4, flexDirection:"row"}}>
+        <View style = {{flex:0.4, paddingTop:10 ,flexDirection:"row"}}>
           <BackButton />
           <View style = {{flex: 7,}}></View>
           <HelpButtonPref />

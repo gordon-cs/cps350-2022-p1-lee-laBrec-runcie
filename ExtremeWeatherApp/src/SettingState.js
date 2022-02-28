@@ -115,6 +115,7 @@ export default class SettingState extends Weather {
                 updatePrecipPref={this.updatePrecipPref}
                 updateUVPref={this.updateUVPref}
                 onParameterChange={this.handleParameterChange}
+      />
     );
   }
 }
