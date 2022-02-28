@@ -67,7 +67,6 @@ export default class SettingState extends Weather {
     let temperatureTEMP = JSON.parse(localStorage.getItem('temprua'));
     if (tempLvl === undefined && temperatureTEMP === null) {
       localStorage.setItem('temprua', JSON.stringify(0.5));
-      console.log(JSON.parse(localStorage.getItem('temprua')));
 
     //    if tempLvl is NULL
     //    2nd case: If they do have a value, just not changed,
@@ -83,7 +82,6 @@ export default class SettingState extends Weather {
     let WindTEMP = JSON.parse(localStorage.getItem('wind'));
     if (windLvl === undefined && WindTEMP === null) {
       localStorage.setItem('wind', JSON.stringify(0.5));
-      console.log(JSON.parse(localStorage.getItem('wind')));
     } else if (windLvl === undefined && WindTEMP !== null) {
       WindTEMP = JSON.parse(localStorage.getItem('wind'));
       localStorage.setItem('wind', JSON.stringify(WindTEMP));
@@ -91,7 +89,16 @@ export default class SettingState extends Weather {
       localStorage.setItem('wind', windLvl);
     }
 
-    localStorage.setItem('precipitation', JSON.stringify(precipLvl));
+    let PrecipTEMP = JSON.parse(localStorage.getItem('precipitation'));
+    if (precipLvl === undefined && PrecipTEMP === null) {
+      localStorage.setItem('precipitation', JSON.stringify(0.5));
+    } else if (precipLvl === undefined && PrecipTEMP !== null) {
+      PrecipTEMP = JSON.parse(localStorage.getItem('precipitation'));
+      localStorage.setItem('precipitation', JSON.stringify(PrecipTEMP));
+    } else {
+      localStorage.setItem('precipitation', precipLvl);
+    }
+
     localStorage.setItem('uvindex', JSON.stringify(uvLvl));
   }
 

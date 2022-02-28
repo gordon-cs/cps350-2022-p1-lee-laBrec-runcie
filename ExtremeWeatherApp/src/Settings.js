@@ -24,8 +24,8 @@ export default class Settings extends Component {
         <Title />
         <TempSlider updateTempPref={this.props.updateTempPref}/> 
         <WindSlider  updateWindPref={this.props.updateWindPref}/> 
-        {/* <PrecipSlider updatePrecipPref={this.props.updatePrecipPref}/>
-        <UVSlider updateUVPref={this.props.updateUVPref}/>  */}
+        <PrecipSlider updatePrecipPref={this.props.updatePrecipPref}/>
+        {/* <UVSlider updateUVPref={this.props.updateUVPref}/>  */}
         <View style = {{flex:1}}>
           <SaveButton onParameterChange={this.props.onParameterChange} />
         </View>
@@ -107,11 +107,7 @@ class WindSlider extends Component {
   render() {
     let Pref = [];
     Pref[0] = 0.5;
-
-    // Get value of temperature 
     let Pref1 = JSON.parse(localStorage.getItem('wind'));
-
-    // As long as its not null, should be fine to set the temp pref
     if (Pref1 !== null) {
       Pref[0] = JSON.parse(localStorage.getItem('wind'));
     }
@@ -152,8 +148,8 @@ class PrecipSlider extends Component {
     let Pref = [];
     Pref[0] = 0.5;
     let Pref1 = JSON.parse(localStorage.getItem('precipitation'));
-    if (Pref[0] !== 0.5 || Pref1 !== null) {
-      Pref = JSON.parse(localStorage.getItem('precipitation'));
+    if (Pref1 !== null) {
+      Pref[0] = JSON.parse(localStorage.getItem('precipitation'));
     }
     let length = 300;
     return (
