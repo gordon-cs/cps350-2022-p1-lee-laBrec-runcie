@@ -8,7 +8,7 @@ export default class HelpButton extends Component {
     "Welcome to XTRM WFR!";
     const settingText = ("Start by clicking on the settings icon in the top right!\n"+
     "After changing your preferences and saving, click the refresh button right next"+
-    " to this icon.\nThis will active the danger dial with a personalized score carefully "+
+    " to this icon.\nThis will activate the danger dial with a personalized score carefully "+
     "calculated according to the current weather and your preferences.")
     return (
       <View style={{flex: 1.5, paddingLeft:5}}>
